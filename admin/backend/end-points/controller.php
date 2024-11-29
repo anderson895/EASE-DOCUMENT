@@ -8,8 +8,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['requestType'])) {
 
 
+        if ($_POST['requestType'] == 'UpdateOrderStatus') {
 
-        if ($_POST['requestType'] == 'addResident') {
+            $orderId = $_POST['orderId'];
+            $orderStatus = $_POST['orderStatus'];
+
+           
+                $order = $db->updateOrderStatus($orderId, $orderStatus);
+
+                if ($order) {
+                    echo 200; 
+                } else {
+                    echo 'Failed to update order in the database.';
+                }
+                
+        }else if ($_POST['requestType'] == 'addResident') {
 
             // Validate and sanitize POST data
             $fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);

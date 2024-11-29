@@ -12,8 +12,17 @@ class global_class extends db_connect
     }
 
 
-
-
+    public function updateOrderStatus($orderId, $newStatus) {
+        // Use a parameterized query to prevent SQL injection
+        $stmt = $this->conn->prepare("UPDATE `request_clearance` SET `rcl_status` = ? WHERE `rcl_id` = ?");
+        
+        // Bind the parameters to the query
+        $stmt->bind_param("si", $newStatus, $orderId); // "si" means string and integer
+        
+        // Execute the query and return the result
+        return $stmt->execute();
+    }
+    
 
 
     public function GetAllOrders()

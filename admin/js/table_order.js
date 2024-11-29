@@ -130,3 +130,58 @@ function generateStatusOptions(currentStatus) {
 
     return options;
 }
+
+
+
+
+
+
+
+
+
+
+
+$(document).on("change", ".UpdateOrderStatus", function () {
+    const $select = $(this); 
+    const orderId = $select.data("orderid");
+    const initialStatus = $select.data("initial-status"); 
+    const newStatus = $select.val(); 
+  
+  
+    if(newStatus==""){
+      console.log("select new status"); 
+      return;
+    }
+    if (newStatus === initialStatus) {
+        console.log("No changes made to the order status."); 
+        return; 
+    }
+  
+    $select.prop("disabled", true);
+  
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: "POST",
+        data: {
+            orderId: orderId,
+            orderStatus: newStatus,
+            requestType: 'UpdateOrderStatus'
+        },
+        success: function (response) {
+          console.log(response);
+          if (response == "200") {
+              alertify.success("Order Status Updated Successfully");
+      
+              // Delay the reload by 1 second (1000 milliseconds)
+              setTimeout(function() {
+                  location.reload();
+              }, 1000);
+          } else {
+              alertify.error(response);
+          }
+      },
+        complete: function () {
+            $select.prop("disabled", false);
+        }
+    });
+  });

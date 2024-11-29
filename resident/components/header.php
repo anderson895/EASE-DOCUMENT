@@ -4,11 +4,11 @@ include('backend/class.php');
 
 $db = new global_class();
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = intval($_SESSION['user_id']); 
+if (isset($_SESSION['r_id'])) {
+    $r_id = intval($_SESSION['r_id']); 
 
     // Gamitin ang check_account method
-    $result = $db->check_account($user_id);
+    $result = $db->check_account($r_id);
 
     if (!empty($result)) {
       
@@ -28,7 +28,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADMIN</title>
+  <title>RESIDENT</title>
   <link rel="icon" type="image/png" href="../assets/logo.jpeg">
   
   <script src="https://cdn.tailwindcss.com"></script>
@@ -52,39 +52,34 @@ if (isset($_SESSION['user_id'])) {
 
 
   <nav class="space-y-4 text-left lg:text-left">
-      <a href="dashboard.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-          <span class="material-icons">dashboard</span>
-          <span>Dashboard</span>
-      </a>
-
+      
       
       <a href="return.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
       <span class="material-icons">manage_accounts</span>
-          <span>users</span>
+          <span>Barangay ID</span>
       </a>
 
+      <!-- FORM -->
 
-      <a href="resident.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-      <span class="material-icons">group</span>
-          <span>resident</span>
+      <a href="barangay_clearance.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <span class="material-icons">description</span>
+          <span>Barangay Clearance</span>
+      </a>
+
+      <a href="customer.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+          <span class="material-icons">description</span>
+          <span>Certificate of Residency</span>
+      </a>
+      <a href="product.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+          <span class="material-icons">description</span>
+          <span>Certificate of Indigency</span>
       </a>
 
       <a href="orderlist.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">local_shipping</span>
-          <span>Request</span>
+          <span>My Request</span>
       </a>
-
-      
-      <a href="customer.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-          <span class="material-icons">history</span>
-          <span>history</span>
-      </a>
-      <a href="product.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-          <span class="material-icons">settings</span>
-          <span>maintinance</span>
-      </a>
-
-
+    <!-- FORM -->
 
       <a href="logout.php">
           <button class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-red-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">

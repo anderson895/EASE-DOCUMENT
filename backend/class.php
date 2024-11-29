@@ -10,7 +10,51 @@ class global_class extends db_connect
     }
 
 
-    public function Login($email, $password)
+    public function LoginResident($email, $password)
+    {
+        $hashedPassword = hash('sha256', $password);
+    
+        $query = $this->conn->prepare("SELECT * FROM `resident` WHERE `r_email` = ? AND `r_password` = ? AND r_status = '1'");
+        $query->bind_param("ss", $email, $hashedPassword);
+    
+        // Execute the query
+        if ($query->execute()) {
+            $result = $query->get_result();
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+    
+                session_start();
+                $_SESSION['r_id'] = $user['r_id'];
+                $_SESSION['r_fname'] = $user['r_fname'];
+    
+                // Build JSON response
+                $response = [
+                    "status" => "success",
+                    "message" => "Login successful.",
+                    "user" => [
+                        "r_id" => $user['r_id'],
+                        "r_fname" => $user['r_fname']
+                    ]
+                ];
+    
+                return json_encode($response);
+            } else {
+                return json_encode([
+                    "status" => "error",
+                    "message" => "Invalid email or password."
+                ]);
+            }
+        } else {
+            return json_encode([
+                "status" => "error",
+                "message" => "Database query failed."
+            ]);
+        }
+    }
+
+    
+
+    public function LoginAdmin($email, $password)
     {
         $hashedPassword = hash('sha256', $password);
     

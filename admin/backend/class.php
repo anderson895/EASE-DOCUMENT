@@ -55,6 +55,9 @@ public function fetch_all_resident() {
         $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
         $r_email, $r_password, $profileImgPathDb, $validIdPathDb
     ) {
+        // Hash the password using SHA-256
+        $hashedPassword = hash('sha256', $r_password);
+    
         // Prepare the SQL statement with placeholders
         $query = "INSERT INTO `resident` 
                   (`r_fname`, `r_mname`, `r_lname`, `r_suffix`, `r_gender`, `r_civil_status`, `r_bday`, 
@@ -69,7 +72,7 @@ public function fetch_all_resident() {
                 "sssssssssssssssss", 
                 $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
                 $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
-                $r_email, $r_password, $profileImgPathDb, $validIdPathDb
+                $r_email, $hashedPassword, $profileImgPathDb, $validIdPathDb
             );
         
             // Execute the statement
@@ -88,6 +91,7 @@ public function fetch_all_resident() {
             return "Error preparing the statement: " . $this->conn->error;
         }
     }
+    
     
     
 

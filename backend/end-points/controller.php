@@ -5,15 +5,23 @@ $db = new global_class();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['requestType'])) {
-        if ($_POST['requestType'] == 'Login') {
+        if ($_POST['requestType'] == 'LoginResident') {
             $email = $_POST['email'];
             $password = $_POST['password'];
             
-            $response = $db->Login($email, $password);
+            $response = $db->LoginResident($email, $password);
             
             echo $response;
             
-        } else {
+        } else if ($_POST['requestType'] == 'LoginAdmin') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            $response = $db->LoginAdmin($email, $password);
+            
+            echo $response;
+            
+        }else{
             echo json_encode([
                 'status' => 'error',
                 'message' => 'Invalid request type'

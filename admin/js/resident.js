@@ -26,7 +26,7 @@ $("#frmAddResident").on("submit", function(e) {
 
             if (response['status']) {
                 alertify.success("Resident Added successfully!");
-                $("#addResidentModal").fadeOut();
+              
 
                 // Delay the reload by 2 seconds (2000 milliseconds)
                 setTimeout(function() {

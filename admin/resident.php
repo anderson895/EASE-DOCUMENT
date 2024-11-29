@@ -15,20 +15,18 @@ include "components/header.php";
 <div class="bg-white rounded-lg shadow-lg p-6">
    
    <!-- Add Resident Button -->
-<div class="mb-4 flex items-center space-x-4">
-    <button id="addResidentButton" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
-        <span class="material-icons mr-1 text-sm">person_add</span>
-        Add Resident
-    </button>
-</div>
+   <div class="mb-4 flex items-center space-x-4">
+       <button id="addResidentButton" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
+           <span class="material-icons mr-1 text-sm">person_add</span>
+           Add Resident
+       </button>
+   </div>
 
-<!-- Search Input -->
-<div class="mb-4">
-    <label for="searchInput" class="block text-xs text-gray-700 mb-1">Search</label>
-    <input type="text" id="searchInput" class="p-2 border rounded-sm text-xs w-60" placeholder="Search resident...">
-</div>
-
-
+   <!-- Search Input -->
+   <div class="mb-4">
+       <label for="searchInput" class="block text-xs text-gray-700 mb-1">Search</label>
+       <input type="text" id="searchInput" class="p-2 border rounded-sm text-xs w-60" placeholder="Search resident...">
+   </div>
 
     <!-- Table Wrapper for Responsiveness -->
     <div class="overflow-x-auto">
@@ -50,17 +48,141 @@ include "components/header.php";
     </div>
 </div>
 
+<div id="addResidentModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50" style="display:none;">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl max-h-screen overflow-y-auto space-y-6">
+        <h3 class="text-2xl font-semibold text-gray-800 text-center">Add Resident</h3>
+        <form action="backend/end-points/add_resident.php" method="POST" class="space-y-6">
+            
+            <!-- Resident Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="mb-4">
+                    <label for="fname" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" id="fname" name="fname" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="mname" class="block text-sm font-medium text-gray-700">Middle Name</label>
+                    <input type="text" id="mname" name="mname" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+
+                <div class="mb-4">
+                    <label for="lname" class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" id="lname" name="lname" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_suffix" class="block text-sm font-medium text-gray-700">Suffix</label>
+                    <input type="text" id="r_suffix" name="r_suffix" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+                </div>
+            </div>
+
+            <!-- Contact & Profile -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="mb-4">
+                    <label for="profileImg" class="block text-sm font-medium text-gray-700">Profile Image</label>
+                    <input type="file" id="profileImg" name="profileImg" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <div id="profileImgPreview" class="mt-4"></div> <!-- Space for displaying the image -->
+                </div>
+
+                <div class="mb-4">
+                    <label for="validId" class="block text-sm font-medium text-gray-700">Valid ID</label>
+                    <input type="file" id="validId" name="validId" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <div id="validIdPreview" class="mt-4"></div> <!-- Space for displaying the image -->
+                </div>
+            </div>
+
+
+            <!-- Personal Info -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="mb-4">
+                    <label for="Gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                    <input type="text" id="Gender" name="Gender" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_civil_status" class="block text-sm font-medium text-gray-700">Civil Status</label>
+                    <input type="text" id="r_civil_status" name="r_civil_status" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_bday" class="block text-sm font-medium text-gray-700">Birthday</label>
+                    <input type="date" id="r_bday" name="r_bday" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_contact_number" class="block text-sm font-medium text-gray-700">Contact Number</label>
+                    <input type="text" id="r_contact_number" name="r_contact_number" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="mb-4">
+                    <label for="r_street" class="block text-sm font-medium text-gray-700">Street</label>
+                    <input type="text" id="r_street" name="r_street" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Region</label>
+                    <select id="region" name="r_province" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    </select>
+                </div>
+
+
+
+                <div class="mb-4">
+                    <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
+                    <select id="province" name="r_province" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="city" class="block text-sm font-medium text-gray-700">Municipality</label>
+                    <select id="city" name="city" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Additional Fields -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="mb-4">
+                    <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
+                    <select id="barangay" name="r_barangay" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="text" id="r_email" name="r_email" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex space-x-4">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Save Resident</button>
+                <button type="button" id="closeModal" class="bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-500">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php include "components/footer.php";?>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Search functionality
-        $('#searchInput').on('input', function() {
-            var value = $(this).val().toLowerCase();
-            $('#userTable tbody tr').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-    });
-</script>
+<script src="js/resident.js"></script>
+<script src="js/address_api.js"></script>

@@ -27,5 +27,24 @@ public function check_account($user_id ) {
         return $items; 
     }
 
+
+public function fetch_all_resident() {
+
+        $query = "SELECT * FROM resident WHERE r_status = '1'";
+    
+        $result = $this->conn->query($query);
+
+        $items = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $items[] = $row;
+            }
+        }
+        return $items; 
+    }
 }
+
+
+
+
 ?>

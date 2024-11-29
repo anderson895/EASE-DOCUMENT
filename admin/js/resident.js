@@ -1,6 +1,70 @@
 $(document).ready(function() {
 
 
+// Handle form submission (Save Promo)
+$("#frmAddResident").on("submit", function(e) {
+    e.preventDefault(); 
+  
+    // Show the loading spinner
+    $("#loadingSpinner").show();
+  
+    var formData = new FormData(this); 
+  
+    formData.append("requestType", 'addResident');  
+  
+    // Send the form data via AJAX
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',  // Corrected here
+        success: function(response) {
+            console.log(response['status']);
+
+
+            if (response['status']) {
+                alertify.success("Resident Added successfully!");
+                $("#addResidentModal").fadeOut();
+
+                // Delay the reload by 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);  // Change the value for a longer/shorter delay
+            }
+        },
+        error: function(error) {
+            // Hide the loading spinner in case of an error
+            $("#loadingSpinner").hide();
+            alert("Error adding Error.");
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // For Profile Image

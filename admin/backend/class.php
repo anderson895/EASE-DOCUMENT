@@ -42,6 +42,56 @@ public function fetch_all_resident() {
         }
         return $items; 
     }
+
+
+
+
+
+
+
+
+    public function addResident(
+        $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
+        $r_contact_number, $r_province, $city, $r_barangay, $r_street, 
+        $r_email, $r_password, $profileImgPathDb, $validIdPathDb
+    ) {
+        // Prepare the SQL statement with placeholders
+        $query = "INSERT INTO `resident` 
+                  (`r_fname`, `r_mname`, `r_lname`, `r_suffix`, `r_gender`, `r_civil_status`, `r_bday`, 
+                   `r_contact_number`, `r_province`, `r_municipality`, `r_barangay`, `r_street`, 
+                   `r_email`, `r_password`, `r_profile`, `r_valid_ids`) 
+                  VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        // Prepare the statement
+        if ($stmt = $this->conn->prepare($query)) {
+            // Bind the parameters to the prepared statement
+            $stmt->bind_param(
+                "ssssssssssssssss", 
+                $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
+                $r_contact_number, $r_province, $city, $r_barangay, $r_street, 
+                $r_email, $r_password, $profileImgPathDb, $validIdPathDb
+            );
+    
+            // Execute the statement
+            if ($stmt->execute()) {
+                // Return success or the ID of the inserted resident
+                return "Resident added successfully.";
+            } else {
+                // Return an error message if something goes wrong
+                return "Error: " . $stmt->error;
+            }
+    
+            // Close the statement
+            $stmt->close();
+        } else {
+            // Return an error message if preparation fails
+            return "Error preparing the statement: " . $this->conn->error;
+        }
+    }
+    
+
+
+
 }
 
 

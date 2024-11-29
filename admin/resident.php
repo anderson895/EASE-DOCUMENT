@@ -48,10 +48,28 @@ include "components/header.php";
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
 <div id="addResidentModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50" style="display:none;">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl max-h-screen overflow-y-auto space-y-6">
         <h3 class="text-2xl font-semibold text-gray-800 text-center">Add Resident</h3>
-        <form action="backend/end-points/add_resident.php" method="POST" class="space-y-6">
+
+ <!-- Spinner -->
+        <div id="loadingSpinner" style="display:none;">
+                <div class=" absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
+
+
+        <form id="frmAddResident" class="space-y-6">
             
             <!-- Resident Details -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -96,13 +114,25 @@ include "components/header.php";
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="mb-4">
                     <label for="Gender" class="block text-sm font-medium text-gray-700">Gender</label>
-                    <input type="text" id="Gender" name="Gender" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <select id="Gender" name="Gender" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                 </div>
+
 
                 <div class="mb-4">
                     <label for="r_civil_status" class="block text-sm font-medium text-gray-700">Civil Status</label>
-                    <input type="text" id="r_civil_status" name="r_civil_status" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <select id="r_civil_status" name="r_civil_status" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                        <option value="">Select Civil Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
                 </div>
+
 
                 <div class="mb-4">
                     <label for="r_bday" class="block text-sm font-medium text-gray-700">Birthday</label>
@@ -115,21 +145,15 @@ include "components/header.php";
                 </div>
             </div>
 
-            <!-- Address -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="mb-4">
-                    <label for="r_street" class="block text-sm font-medium text-gray-700">Street</label>
-                    <input type="text" id="r_street" name="r_street" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
-                </div>
-
+           <!-- Address -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+               
 
                 <div class="mb-4">
                     <label for="region" class="block text-sm font-medium text-gray-700">Region</label>
                     <select id="region" name="r_province" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                     </select>
                 </div>
-
-
 
                 <div class="mb-4">
                     <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
@@ -142,10 +166,7 @@ include "components/header.php";
                     <select id="city" name="city" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                     </select>
                 </div>
-            </div>
 
-            <!-- Additional Fields -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="mb-4">
                     <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
                     <select id="barangay" name="r_barangay" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
@@ -153,14 +174,35 @@ include "components/header.php";
                 </div>
 
                 <div class="mb-4">
+                    <label for="r_street" class="block text-sm font-medium text-gray-700">Street</label>
+                    <input type="text" id="r_street" name="r_street" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+            </div>
+
+
+            <!-- Additional Fields -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                
+
+                <div class="mb-4">
                     <label for="r_email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="text" id="r_email" name="r_email" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="r_password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="r_password" name="r_password" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="c_Password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                    <input type="password" id="c_Password" name="c_Password" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                 </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="flex space-x-4">
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Save Resident</button>
+                <button id="AddResident" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Save Resident</button>
                 <button type="button" id="closeModal" class="bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-500">Cancel</button>
             </div>
 

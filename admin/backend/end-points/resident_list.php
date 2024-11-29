@@ -11,9 +11,8 @@ if ($fetch_all_resident): ?>
 
         $Address = $resident['r_street'] . ' ' . $resident['r_barangay'] . ' ' . $resident['r_province'] . ' ' . $resident['r_municipality'];
 
-        // Check if the address is longer than 50 characters
         if (strlen($Address) > 50) {
-            $Address = substr($Address, 0, 50) . '...'; // Truncate and add ellipsis
+            $Address = substr($Address, 0, 50) . '...';
         }
         
         $resident['r_barangay'] . ', ' . 
@@ -26,14 +25,8 @@ if ($fetch_all_resident): ?>
         ' ' . $resident['r_lname'] . 
         ($resident['r_suffix'] ? ' ' . $resident['r_suffix'] : '');
 
-        if($resident['r_status'] =='1'){
-            $status_color = "text-yellow-500";
-            $status= "Not Verified";
-        }else if($resident['r_status'] =='2'){
-            $status= "Verified";
-            $status_color = "text-green-500";
-        }
-      
+       
+        $valid_id=$resident['r_valid_ids'];
         ?>
       <tr>
     <td class="p-2"><?= htmlspecialchars($resident['r_id']); ?></td>
@@ -41,23 +34,22 @@ if ($fetch_all_resident): ?>
     <td class="p-2"><?= htmlspecialchars($fullname); ?></td>
     <td class="p-2"><?= htmlspecialchars($resident['r_email']); ?></td>
     <td class="p-2"><?= htmlspecialchars($Address); ?></td>
-    <td class="p-2 <?= $status_color; ?>"><?= $status; ?></td>
     <td class="p-2">
         <!-- Wrapper for horizontal scroll -->
         <div class="overflow-x-auto whitespace-nowrap">
             <div class="inline-flex gap-2">
-                <!-- Verify Button -->
-                <button class="bg-green-500 text-white py-0.5 px-3 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-                    Verify
-                </button>
                 <!-- Decline Button -->
-                <button class="bg-red-500 text-white py-0.5 px-3 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
-                    Decline
-                </button>
+                
                 <!-- View More Button -->
-                <button class="bg-gray-500 text-white py-0.5 px-3 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-                    View More
+                <button class="viewResidentModal bg-gray-500 text-white py-1 px-2 text-sm rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
+                    <span class="material-icons text-sm">visibility</span> 
                 </button>
+                <button class="bg-red-500 text-white py-1 px-2 text-sm rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
+                    <span class="material-icons text-sm">delete</span> 
+                </button>
+
+
+
             </div>
         </div>
     </td>

@@ -14,11 +14,18 @@ include "components/header.php";
 <!-- Card for Table -->
 <div class="bg-white rounded-lg shadow-lg p-6">
     <h3 class="text-xl font-semibold text-gray-700 mb-4">Resident List</h3>
-
+   
     <!-- Search Input -->
-    <div class="mb-4">
-        <input type="text" id="searchInput" class="p-2 border rounded-md" placeholder="Search resident...">
+    <div class="mb-4 flex items-center space-x-4">
+        <button id="adduserButton" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-sm flex items-center hover:bg-blue-600 transition duration-300">
+            <span class="material-icons mr-1 text-sm">person_add</span>
+            Add Resident
+        </button>
+
+        <input type="text" id="searchInput" class="p-2 border rounded-sm text-xs" placeholder="Search resident...">
     </div>
+
+
 
     <!-- Table Wrapper for Responsiveness -->
     <div class="overflow-x-auto">
@@ -30,7 +37,6 @@ include "components/header.php";
                     <th class="p-2">Fullname</th>
                     <th class="p-2">Email</th>
                     <th class="p-2">Address</th>
-                    <th class="p-2">Status</th>
                     <th class="p-2">Actions</th>
                 </tr>
             </thead>

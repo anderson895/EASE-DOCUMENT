@@ -34,11 +34,18 @@ $("#frmAddResident").on("submit", function(e) {
                 }, 2000);  // Change the value for a longer/shorter delay
             }
         },
-        error: function(error) {
+        error: function(jqXHR, textStatus, errorThrown) {
             // Hide the loading spinner in case of an error
             $("#loadingSpinner").hide();
-            alert("Error adding Error.");
+        
+            // Display error message in alert
+            alert("Error occurred while adding the resident: " + textStatus);
+        
+            // Log detailed error information to the console
+            console.error("AJAX Error:", textStatus, errorThrown);
+            console.error("Response Text:", jqXHR.responseText);
         }
+        
     });
 });
 

@@ -52,26 +52,26 @@ public function fetch_all_resident() {
 
     public function addResident(
         $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
-        $r_contact_number, $r_province, $city, $r_barangay, $r_street, 
+        $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
         $r_email, $r_password, $profileImgPathDb, $validIdPathDb
     ) {
         // Prepare the SQL statement with placeholders
         $query = "INSERT INTO `resident` 
                   (`r_fname`, `r_mname`, `r_lname`, `r_suffix`, `r_gender`, `r_civil_status`, `r_bday`, 
-                   `r_contact_number`, `r_province`, `r_municipality`, `r_barangay`, `r_street`, 
+                   `r_contact_number`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_street`, 
                    `r_email`, `r_password`, `r_profile`, `r_valid_ids`) 
-                  VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
         // Prepare the statement
         if ($stmt = $this->conn->prepare($query)) {
             // Bind the parameters to the prepared statement
             $stmt->bind_param(
-                "ssssssssssssssss", 
+                "sssssssssssssssss", 
                 $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
-                $r_contact_number, $r_province, $city, $r_barangay, $r_street, 
+                $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
                 $r_email, $r_password, $profileImgPathDb, $validIdPathDb
             );
-    
+        
             // Execute the statement
             if ($stmt->execute()) {
                 // Return success or the ID of the inserted resident
@@ -80,7 +80,7 @@ public function fetch_all_resident() {
                 // Return an error message if something goes wrong
                 return "Error: " . $stmt->error;
             }
-    
+        
             // Close the statement
             $stmt->close();
         } else {
@@ -88,6 +88,7 @@ public function fetch_all_resident() {
             return "Error preparing the statement: " . $this->conn->error;
         }
     }
+    
     
 
 

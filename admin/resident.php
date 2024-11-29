@@ -151,7 +151,7 @@ include "components/header.php";
 
                 <div class="mb-4">
                     <label for="region" class="block text-sm font-medium text-gray-700">Region</label>
-                    <select id="region" name="r_province" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <select id="region" name="r_region" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                     </select>
                 </div>
 
@@ -163,7 +163,7 @@ include "components/header.php";
 
                 <div class="mb-4">
                     <label for="city" class="block text-sm font-medium text-gray-700">Municipality</label>
-                    <select id="city" name="city" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <select id="city" name="r_city" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                     </select>
                 </div>
 

@@ -10,6 +10,17 @@ if (isset($_SESSION['r_id'])) {
     // Gamitin ang check_account method
     $result = $db->check_account($r_id);
 
+
+    // Assuming $result is an array of arrays, access the first element
+    if (isset($result[0]['r_region'], $result[0]['r_province'], $result[0]['r_municipality'], $result[0]['r_barangay'], $result[0]['r_street'])) {
+    $address = $result[0]['r_region'] . ' ' . $result[0]['r_province'] . ' ' . $result[0]['r_municipality'] . ' ' . $result[0]['r_barangay'] . ' ' . $result[0]['r_street'];
+  } else {
+      // Handle the case when keys are missing
+      $address = 'Enter Complete Address';
+  }
+  
+
+
     if (!empty($result)) {
       
     } else {

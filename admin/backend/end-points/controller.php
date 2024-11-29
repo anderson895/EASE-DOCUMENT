@@ -163,11 +163,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'message' => 'Access Denied! No Request Type.'
         ]);
     }
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'GET requests are not supported for this operation.'
-    ]);
+} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    
+    if ($_GET['requestType'] == 'GetAllOrders') {
+        $orders = $db->GetAllOrders();
+        if ($orders !== false) {
+            echo json_encode(['status' => 'success', 'data' => $orders]);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'No cars found or error retrieving data.']);
+        }
+    }
 }
 
 // Function to generate a unique filename

@@ -12,6 +12,45 @@ class global_class extends db_connect
     }
 
 
+
+
+
+
+    public function GetAllOrders()
+    {
+        // Prepare the query with sorting by order_date in descending order
+        $query = "SELECT * FROM request_clearance
+                  LEFT JOIN resident ON resident.r_id = request_clearance.rcl_r_id
+                  ORDER BY request_clearance.rcl_request_date DESC"; 
+    
+        $result = $this->conn->query($query);
+        
+        // Check if the query was successful
+        if ($result === false) {
+            // Log or handle the error
+            error_log("Query execution failed: " . $this->conn->error);
+            return false;
+        }
+    
+        // Check if there are any results
+        if ($result->num_rows > 0) {
+            // Fetch the results and return them as an associative array
+            $order = [];
+            while ($row = $result->fetch_assoc()) {
+                $order[] = $row;
+            }
+            return $order;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
 public function check_account($user_id ) {
 
         $query = "SELECT * FROM user WHERE user_id = $user_id";

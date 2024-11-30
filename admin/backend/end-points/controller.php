@@ -22,6 +22,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo 'Failed to update order in the database.';
                 }
                 
+        }else if ($_POST['requestType'] == 'UpdateAdminInfo') {
+
+            $user_fname = $_POST['user_fname'];
+            $user_mname = $_POST['user_mname'];
+            $user_lname = $_POST['user_lname'];
+            $email = $_POST['email'];
+            $user_id = $_POST['user_id'];
+
+           
+                $order = $db->UpdateAdminInfo($user_fname, $user_mname, $user_lname, $email, $user_id);
+
+                if ($order) {
+                    echo 200; 
+                } else {
+                    echo 'Failed to update order in the database.';
+                }
+                
+        }else if ($_POST['requestType'] == 'UpdatePassword') {
+
+            $current_password = $_POST['current_password'];
+            $new_password = $_POST['new_password'];
+            $user_id = $_POST['user_id'];
+            
+            // Call the function to update the password
+            $order = $db->UpdateAdminPassword($current_password, $new_password, $user_id);
+            
+            // Check if the update was successful and return the response as JSON
+            if ($order === "Password updated successfully.") {
+                echo json_encode([
+                    'status' => 200,
+                    'message' => 'Password updated successfully.'
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 400,
+                    'message' => $order  // Return the error message from the UpdateAdminPassword function
+                ]);
+            }
+            
+                
         }else if ($_POST['requestType'] == 'addResident') {
 
             // Validate and sanitize POST data

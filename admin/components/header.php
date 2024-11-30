@@ -10,6 +10,8 @@ if (isset($_SESSION['user_id'])) {
     // Gamitin ang check_account method
     $result = $db->check_account($user_id);
 
+
+
     if (!empty($result)) {
       
     } else {
@@ -58,10 +60,7 @@ if (isset($_SESSION['user_id'])) {
       </a>
 
       
-      <a href="return.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-      <span class="material-icons">manage_accounts</span>
-          <span>users</span>
-      </a>
+  
 
 
       <a href="resident.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
@@ -79,9 +78,9 @@ if (isset($_SESSION['user_id'])) {
           <span class="material-icons">history</span>
           <span>history</span>
       </a>
-      <a href="product.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <a href="settings.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">settings</span>
-          <span>maintinance</span>
+          <span>settings</span>
       </a>
 
 

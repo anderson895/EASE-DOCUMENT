@@ -1,25 +1,20 @@
 $(document).ready(function() {
 
 
-// Handle form submission (Save Promo)
 $("#frmAddResident").on("submit", function(e) {
     e.preventDefault(); 
-  
-    // Show the loading spinner
     $("#loadingSpinner").show();
-  
     var formData = new FormData(this); 
   
     formData.append("requestType", 'addResident');  
   
-    // Send the form data via AJAX
     $.ajax({
         url: "backend/end-points/controller.php",
         method: 'POST',
         data: formData,
         processData: false,
         contentType: false,
-        dataType: 'json',  // Corrected here
+        dataType: 'json', 
         success: function(response) {
             console.log(response['status']);
 
@@ -28,22 +23,10 @@ $("#frmAddResident").on("submit", function(e) {
                 alertify.success("Resident Added successfully!");
               
 
-                // Delay the reload by 2 seconds (2000 milliseconds)
                 setTimeout(function() {
                     location.reload();
-                }, 2000);  // Change the value for a longer/shorter delay
+                }, 2000);  
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Hide the loading spinner in case of an error
-            $("#loadingSpinner").hide();
-        
-            // Display error message in alert
-            alert("Error occurred while adding the resident: " + textStatus);
-        
-            // Log detailed error information to the console
-            console.error("AJAX Error:", textStatus, errorThrown);
-            console.error("Response Text:", jqXHR.responseText);
         }
         
     });

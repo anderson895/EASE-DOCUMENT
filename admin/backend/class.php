@@ -133,10 +133,73 @@ public function fetch_all_resident() {
 
 
 
-
-
-
-
+    public function UpdateAdminInfo($user_fname, $user_mname, $user_lname, $email, $user_id){
+        // Prepare the SQL statement with placeholders
+        $query = "UPDATE `user` SET `user_fname`=?, `user_mname`=?, `user_lname`=?, `user_email`=? WHERE `user_id`=?";
+        
+        // Prepare the statement
+        if ($stmt = $this->conn->prepare($query)) {
+            // Bind the parameters to the query
+            $stmt->bind_param("ssssi", $user_fname, $user_mname, $user_lname, $email, $user_id);
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                // Success, return true or some success message
+                return "Admin info updated successfully.";
+            } else {
+                // If execution fails, return error message
+                return "Error executing the statement: " . $stmt->error;
+            }
+            
+            // Close the statement
+            $stmt->close();
+        } else {
+            // Return an error message if preparation fails
+            return "Error preparing the statement: " . $this->conn->error;
+        }
+    }
+    
+    public function UpdateAdminPassword($current_password, $new_password, $user_id){
+        // Get the current password from the database
+        $query = "SELECT `user_password` FROM `user` WHERE `user_id`=?";
+        
+        if ($stmt = $this->conn->prepare($query)) {
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $stmt->store_result();
+            
+            // Check if user exists
+            if ($stmt->num_rows > 0) {
+                $stmt->bind_result($stored_password);
+                $stmt->fetch();
+                
+                // Verify current password
+                if (hash('sha256', $current_password) === $stored_password) {
+                    // Hash and update new password
+                    $new_password_hash = hash('sha256', $new_password);
+                    $update_query = "UPDATE `user` SET `user_password`=? WHERE `user_id`=?";
+                    
+                    if ($update_stmt = $this->conn->prepare($update_query)) {
+                        $update_stmt->bind_param("si", $new_password_hash, $user_id);
+                        $update_stmt->execute();
+                        $update_stmt->close();
+                        return "Password updated successfully.";
+                    } else {
+                        return "Error updating password.";
+                    }
+                } else {
+                    return "Current password is incorrect.";
+                }
+            } else {
+                return "User not found.";
+            }
+            $stmt->close();
+        } else {
+            return "Error preparing the statement.";
+        }
+    }
+    
+    
     public function addResident(
         $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
         $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 

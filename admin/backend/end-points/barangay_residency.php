@@ -1,4 +1,8 @@
 <div id="printableArea" class="max-w-4xl mx-auto bg-white p-8 mt-12 shadow-lg rounded-lg">
+   
+
+
+
 
 
 
@@ -10,21 +14,23 @@
 </div>
 
 <div class="mt-8">
-    <h1 class="text-xl font-bold text-center uppercase underline">Barangay Indigency Certificate</h1>
+    <h1 class="text-xl font-bold text-center uppercase underline">Certificate of Residency</h1>
 </div>
 
-<div class="mt-12"> <!-- Increased margin-top here -->
+<div class="mt-12">
     <p class="text-justify">
         <span class="font-bold">TO WHOM IT MAY CONCERN:</span>
     </p>
     <p class="mt-4 text-justify">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         This is to certify that <span class="underline">______________<?=$fullName?>_________________</span>, 
-        <span class="underline">____<?=$age?>____</span> years old, and a resident of Barangay 434, Zone 44, 
-        Fourth District, Manila, is a legitimate indigent citizen of this barangay and is in need of assistance.
+        <span class="underline">____<?=$age?>____</span> years old, is a bona fide resident of 
+        Barangay 434, Zone 44, Fourth District, Manila, and has been residing in the barangay for 
+        <span class="underline">____<?=$r_howlong_living?>____</span>.
     </p>
     <p class="mt-4 text-justify">
-        To certify further, that he/she has no permanent source of income and is unable to support his/her own basic needs.
+        This certification is issued to <span class="underline"><?=$fullName?></span> upon his/her request for 
+        any legal purpose it may serve.
     </p>
 </div>
 
@@ -33,7 +39,7 @@
         <span class="font-bold">Issued</span> this 
         <span class="underline">____<?=$ordinalDay?>____</span> day of 
         <span class="underline">__________<?=$month?>______________</span>, 
-        <?=$year?> at Barangay 434, Zone 44, Fourth District, Manila, upon request of the interested party for whatever legal purposes it may serve.
+        <?=$year?> at Barangay 434, Zone 44, Fourth District, Manila.
     </p>
 </div>
 
@@ -47,6 +53,12 @@
     <p>Date Issued: <span class="underline">_________<?=$formattedDate?>____________</span></p>
     <p>Doc. Stamp: <span class="underline">Paid</span></p>
 </div>
+
+
+
+
+
+
 
 
 

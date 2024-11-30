@@ -39,6 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $barangayId = filter_input(INPUT_POST, 'r_barangay', FILTER_SANITIZE_STRING);
             $r_street = filter_input(INPUT_POST, 'r_street', FILTER_SANITIZE_STRING);
             $r_email = filter_input(INPUT_POST, 'r_email', FILTER_SANITIZE_EMAIL);
+
+            $r_longlive = filter_input(INPUT_POST, 'longlive', FILTER_SANITIZE_EMAIL);
+
+            
             $r_password = $_POST['r_password'];
 
             // Fetch the JSON data from the API endpoints
@@ -149,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $response = $db->addResident(
                     $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, 
                     $r_bday, $r_contact_number,$region, $province, $city, $barangay, 
-                    $r_street, $r_email, $r_password, $profileImgName, $validIdName
+                    $r_street, $r_email, $r_password, $profileImgName, $validIdName,$r_longlive
                 );
                 echo json_encode([
                     'status' => 'success',

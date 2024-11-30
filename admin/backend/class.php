@@ -25,6 +25,45 @@ class global_class extends db_connect
     
 
 
+
+
+
+
+    public function viewOrderDetails($cr_id)
+    {
+        // Prepare the query with sorting by order_date in descending order
+        $query = "SELECT * FROM centralize_request
+                  LEFT JOIN resident ON resident.r_id = centralize_request.cr_r_id
+                  where cr_id = '$cr_id'
+                  ORDER BY centralize_request.cr_request_date DESC
+                  "; 
+    
+        $result = $this->conn->query($query);
+        
+        // Check if the query was successful
+        if ($result === false) {
+            // Log or handle the error
+            error_log("Query execution failed: " . $this->conn->error);
+            return false;
+        }
+    
+        // Check if there are any results
+        if ($result->num_rows > 0) {
+            // Fetch the results and return them as an associative array
+            $order = [];
+            while ($row = $result->fetch_assoc()) {
+                $order[] = $row;
+            }
+            return $order;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
     public function GetAllOrders()
     {
         // Prepare the query with sorting by order_date in descending order
@@ -101,7 +140,7 @@ public function fetch_all_resident() {
     public function addResident(
         $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
         $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
-        $r_email, $r_password, $profileImgPathDb, $validIdPathDb
+        $r_email, $r_password, $profileImgPathDb, $validIdPathDb,$r_longlive
     ) {
         // Hash the password using SHA-256
         $hashedPassword = hash('sha256', $r_password);
@@ -110,17 +149,17 @@ public function fetch_all_resident() {
         $query = "INSERT INTO `resident` 
                   (`r_fname`, `r_mname`, `r_lname`, `r_suffix`, `r_gender`, `r_civil_status`, `r_bday`, 
                    `r_contact_number`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_street`, 
-                   `r_email`, `r_password`, `r_profile`, `r_valid_ids`) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                   `r_email`, `r_password`, `r_profile`, `r_valid_ids`,`r_howlong_living`) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         
         // Prepare the statement
         if ($stmt = $this->conn->prepare($query)) {
             // Bind the parameters to the prepared statement
             $stmt->bind_param(
-                "sssssssssssssssss", 
+                "ssssssssssssssssss", 
                 $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
                 $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
-                $r_email, $hashedPassword, $profileImgPathDb, $validIdPathDb
+                $r_email, $hashedPassword, $profileImgPathDb, $validIdPathDb,$r_longlive
             );
         
             // Execute the statement

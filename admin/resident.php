@@ -167,6 +167,13 @@ include "components/header.php";
                     </select>
                 </div>
 
+
+                <div class="mb-4">
+                    <label for="longlive" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
+                    <input type="text" id="longlive" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
+
                 <div class="mb-4">
                     <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
                     <select id="barangay" name="r_barangay" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>

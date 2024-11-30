@@ -26,16 +26,40 @@ function getAge($birthday) {
     return $today->diff($birthDate)->y;
 }
 
-$GetAllOrders = $db->GetAllOrders();
+$cr_id=$_GET['cr_id'];
+$GetAllOrders = $db->viewOrderDetails($cr_id,$user_id);
 foreach ($GetAllOrders as $order):
 
+    $r_howlong_living=$order['r_howlong_living'];
+    $r_id =$order['r_id'];
     $cr_code=$order['cr_code'];
+    $birthday = $order['r_bday']; 
+    $cr_1X1_pic = $order['cr_1X1_pic']; 
+    $cr_Signature = $order['cr_Signature']; 
+    
+    $address = $order['r_region'] . ' ' . $order['r_province'] . ' ' . $order['r_municipality'] . ' ' . $order['r_barangay'] . ' ' . $order['r_street'];
+
+
+    $date = new DateTime($birthday);
+    $formatted_birthday = $date->format('F j, Y');
+
+
     $age = getAge($order['r_bday']);
     $fullName = ucfirst($order['r_fname']) . ' ' . $order['r_mname'] . ' ' . $order['r_lname'];
 
     if($order['cr_formtype']=="Barangay Clearance"){
         include "backend/end-points/barangay_clearance.php";
+    }else if($order['cr_formtype']=="Barangay Indigency"){
+        include "backend/end-points/barangay_indigency.php";
+    }else if($order['cr_formtype']=="Barangay ID"){
+        include "backend/end-points/barangay_id.php";
+    }else if($order['cr_formtype']=="Barangay Residency"){
+        include "backend/end-points/barangay_residency.php";
     }
+
+
+    
+endforeach;
 ?>
 
 
@@ -117,6 +141,5 @@ foreach ($GetAllOrders as $order):
 
 
 <?php
-endforeach;
 include "components/footer.php";
 ?>

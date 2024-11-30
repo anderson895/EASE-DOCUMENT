@@ -2,58 +2,74 @@ $(document).ready(function() {
 
 
 
-$("#frmRequestClearance").on("submit", function(e) {
+$("#frmRequestBrgyId").on("submit", function(e) {
     e.preventDefault(); 
-  
     // Show the loading spinner
-    $("#loadingSpinner").show();
+    $("#loadingSpinner_BrgyId").show();
 
-
-    var shippingFee = $("#shippingFee").attr('data-shippingFee');
-    var documentPrice = $("#documentPrice").attr('data-documentPrice');
-    var totalPrice = $("#totalPrice").attr('data-totalPrice');
-    
+    var shippingFee = $("#shippingFee_BrgyId").attr('data-shippingFee');
+    var documentPrice = $("#documentPrice_BrgyId").attr('data-documentPrice');
+    var totalPrice = $("#totalPrice_BrgyId").attr('data-totalPrice');
     var formData = new FormData(this);
-    
-    // Append specific attributes
+
     formData.append('shippingFee', shippingFee);
     formData.append('documentPrice', documentPrice);
     formData.append('totalPrice', totalPrice);
-  
-    formData.append("requestType", 'RequestClearance');  
-  
-    // Send the form data via AJAX
+    formData.append("requestType", 'RequestBarangayID');  
     $.ajax({
         url: "backend/end-points/controller.php",
         method: 'POST',
         data: formData,
         processData: false,
         contentType: false,
-        dataType: 'json',  // Corrected here
+        dataType: 'json',
         success: function(response) {
             console.log(response);
-
-
             if (response['status']) {
                 alertify.success("Clearance Added successfully!");
-              
-
-                // Delay the reload by 2 seconds (2000 milliseconds)
                 setTimeout(function() {
                     location.reload();
-                }, 2000);  // Change the value for a longer/shorter delay
+                }, 2000);
             }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // Hide the loading spinner in case of an error
-            $("#loadingSpinner").hide();
+        }
         
-            // Display error message in alert
-            alert("Error occurred while adding the resident: " + textStatus);
-        
-            // Log detailed error information to the console
-            console.error("AJAX Error:", textStatus, errorThrown);
-            console.error("Response Text:", jqXHR.responseText);
+    });
+});
+
+
+
+
+
+
+$("#frmRequestClearance").on("submit", function(e) {
+    e.preventDefault(); 
+    // Show the loading spinner
+    $("#loadingSpinner_Clearance").show();
+
+    var shippingFee = $("#shippingFee_Clearance").attr('data-shippingFee');
+    var documentPrice = $("#documentPrice_Clearance").attr('data-documentPrice');
+    var totalPrice = $("#totalPrice_Clearance").attr('data-totalPrice');
+    var formData = new FormData(this);
+
+    formData.append('shippingFee', shippingFee);
+    formData.append('documentPrice', documentPrice);
+    formData.append('totalPrice', totalPrice);
+    formData.append("requestType", 'RequestClearance');  
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function(response) {
+            console.log(response);
+            if (response['status']) {
+                alertify.success("Clearance Added successfully!");
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
         }
         
     });
@@ -81,33 +97,64 @@ $("#frmRequestClearance").on("submit", function(e) {
 }
 
 // Handle Valid ID preview
-$('#validId').on('change', function () {
-    previewImage(this, 'validIdPreview');
+$('#validId_Clearance').on('change', function () {
+    previewImage(this, 'validIdPreview_Clearance');
 });
 
 // Handle Proof of Residency preview
-$('#proofResidency').on('change', function () {
-    previewImage(this, 'proofResidencyPreview');
+$('#proofResidency_Clearance').on('change', function () {
+    previewImage(this, 'proofResidencyPreview_Clearance');
 });
+
+
+
+
+$('#1x1pic_BrgyId').on('change', function () {
+    previewImage(this, '1x1picPreview_BrgyId');
+});
+
+$('#signature_BrgyId').on('change', function () {
+    previewImage(this, 'signaturePreview_BrgyId');
+});
+
+$('#validId_BrgyId').on('change', function () {
+    previewImage(this, 'validIdPreview_BrgyId');
+});
+
+
+$('#proofResidency_BrgyId').on('change', function () {
+    previewImage(this, 'proofResidencyPreview_BrgyId');
+});
+
 
 
 
 
     // Open modal when the button is clicked
-    $('#requestClearanceModal').click(function() {
+    $('#OpenClearanceModal').click(function() {
         $('#clearanceModal').fadeIn();
     });
 
     // Close modal when the Cancel button is clicked
-    $('#closeModal').click(function() {
+    $('.closeModal').click(function() {
         $('#clearanceModal').fadeOut();
     });
 
 
 
 
+    $('#OpenBrgyIdModal').click(function() {
+        $('#BrgyIdModal').fadeIn();
+    });
+
+    // Close modal when the Cancel button is clicked
+    $('#closeModal').click(function() {
+        $('#BrgyIdModal').fadeOut();
+    });
 
 
+
+    
 
 
 

@@ -58,7 +58,34 @@ public function check_account($r_id) {
     
     
     
-
+    public function RequestBarangayID($purpose, $address, $payment, $validId, $proofResidency, $pic, $signature, $r_id, $documentPrice, $shippingFee, $totalPrice) {
+        // Generate a unique code (example: timestamp + random string)
+        $uniqueCode = uniqid('CR-', true); // Generates a unique code like CR-5f847ac3b5361
+    
+        // Prepare the SQL query
+        $query = "INSERT INTO `centralize_request` 
+                  (`cr_code`, `cr_purpose`, `cr_address`, `cr_payment`, `cr_validId`, `cr_proofResidency`, `cr_1X1_pic`, `cr_Signature`, `cr_r_id`, `cr_price`, `cr_shipping_fee`, `cr_total`, `cr_formtype`) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        // Prepare the statement
+        $stmt = $this->conn->prepare($query);
+        if (!$stmt) {
+            throw new Exception("Database error: " . $this->conn->error);
+        }
+    
+        // Bind the parameters
+        $formType = 'Barangay ID';
+        $stmt->bind_param("ssssssssiddds", $uniqueCode, $purpose, $address, $payment, $validId, $proofResidency, $pic, $signature, $r_id, $documentPrice, $shippingFee, $totalPrice, $formType);
+    
+        // Execute the query
+        if ($stmt->execute()) {
+            // Return a success message
+            return "Barangay ID request successfully submitted";
+        } else {
+            throw new Exception("Failed to submit Barangay ID request: " . $stmt->error);
+        }
+    }
+    
 
     
     public function fetch_all_clearance_request($r_id){

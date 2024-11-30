@@ -18,6 +18,7 @@ if ($fetch_all_clearance_request): ?>
         ?>
       <tr>
     <td class="p-2"><?= $request['cr_id']; ?></td>
+    <td class="p-2"><?= $request['cr_formtype']; ?></td>
     <td class="p-2"><?= $request['cr_purpose']; ?></td>
     <td class="p-2"><?= $request['cr_address']; ?></td>
     <td class="p-2"><?= $request['cr_payment']; ?></td>

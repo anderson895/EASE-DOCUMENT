@@ -25,11 +25,11 @@ include "components/header.php";
         <span class="material-icons mr-1 text-sm">post_add</span>
         Request Clearance
     </button>
-    <button id="OpejResidencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
+    <button id="OpenResidencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
         <span class="material-icons mr-1 text-sm">post_add</span>
         Certificate of Residency
     </button>
-    <button id="requestIndigencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
+    <button id="OpenIndigencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
         <span class="material-icons mr-1 text-sm">post_add</span>
         Certificate of Indigency
     </button>
@@ -69,6 +69,76 @@ include "components/header.php";
 
 
 
+<!-- Modal clearanceModal -->
+<div id="indigencyModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 overflow-auto" style="display:none;">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mx-4 max-h-screen overflow-y-auto">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Indigency</h3>
+        <p class="text-sm text-gray-600 mb-6">Please fill out the form to request your clearance.</p>
+        
+        <div id="loadingSpinner_Indigency" style="display:none;">
+            <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="frmRequest_Indigency">
+            <input hidden type="text" value="<?=$_SESSION['r_id']?>" name="r_id">
+            <!-- Valid ID -->
+            <div class="mb-6">
+                <label for="validId_Indigency" class="block text-sm font-medium text-gray-700 mb-2">ID (Valid ID/School ID)</label>
+                <input type="file" id="validId_Indigency" name="validId" accept="image/*" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" required>
+                <div id="validIdPreview_Indigency" class="mt-3"></div>
+            </div>
+
+            <!-- Purpose -->
+            <div class="mb-6">
+                <label for="purpose" class="block text-sm font-medium text-gray-700 mb-2">Purpose</label>
+                <textarea id="purpose" name="purpose" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-6">
+                <label for="addressForm" class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                <textarea id="addressForm" name="addressForm" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" required><?=$address?></textarea>
+            </div>
+
+            <!-- Payment -->
+            <div class="mb-4">
+                <label for="payment" class="block text-sm font-medium text-gray-700 mb-2">Payment</label>
+                <select name="payment" id="payment" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select>
+            </div>
+
+            
+
+        <!-- Receipt Section -->
+        <div id="receiptSection" class=" border-t pt-6">
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">Total</h4>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-gray-600">Document Price:</span>
+                <span id="documentPrice_Indigency" class="text-sm text-gray-800" data-documentPrice="50.00" >₱ 50.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-gray-600">Shipping Fee:</span>
+                <span id="shippingFee_Indigency" class="text-sm text-gray-800" data-shippingFee="0.00" >₱ 0.00</span>
+            </div>
+            <div class="flex justify-between items-center font-semibold">
+                <span class="text-sm text-gray-600">Total:</span>
+                <span id="totalPrice_Indigency" class="text-sm text-gray-800" data-totalPrice="50.00" >₱ 50.00</span>
+            </div>
+        </div>
+
+             <!-- Buttons -->
+              <div class="border-t mt-4"></div>
+                <div class="flex justify-end space-x-4 mb-6 mt-6 ">
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Send Request</button>
+                    <button type="button" class="closeModal bg-gray-400 text-white py-2 px-6 rounded-md hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">Cancel</button>
+                </div>
+            </form>
+    </div>
+</div>
 
 
 
@@ -122,15 +192,15 @@ include "components/header.php";
             <h4 class="text-lg font-semibold text-gray-800 mb-4">Total</h4>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Document Price:</span>
-                <span id="documentPrice_Residency" class="text-sm text-gray-800" data-documentPrice="150.00" >₱ 150.00</span>
+                <span id="documentPrice_Residency" class="text-sm text-gray-800" data-documentPrice="50.00" >₱ 50.00</span>
             </div>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Shipping Fee:</span>
-                <span id="shippingFee_Residency" class="text-sm text-gray-800" data-shippingFee="50.00" >₱ 50.00</span>
+                <span id="shippingFee_Residency" class="text-sm text-gray-800" data-shippingFee="0.00" >₱ 0.00</span>
             </div>
             <div class="flex justify-between items-center font-semibold">
                 <span class="text-sm text-gray-600">Total:</span>
-                <span id="totalPrice_Residency" class="text-sm text-gray-800" data-totalPrice="200.00" >₱ 200.00</span>
+                <span id="totalPrice_Residency" class="text-sm text-gray-800" data-totalPrice="50.00" >₱ 50.00</span>
             </div>
         </div>
 
@@ -223,15 +293,15 @@ include "components/header.php";
             <h4 class="text-lg font-semibold text-gray-800 mb-4">Total</h4>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Document Price:</span>
-                <span id="documentPrice_BrgyId" class="text-sm text-gray-800" data-documentPrice="150.00" >₱ 150.00</span>
+                <span id="documentPrice_BrgyId" class="text-sm text-gray-800" data-documentPrice="50.00" >₱ 50.00</span>
             </div>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Shipping Fee:</span>
-                <span id="shippingFee_BrgyId" class="text-sm text-gray-800" data-shippingFee="50.00" >₱ 50.00</span>
+                <span id="shippingFee_BrgyId" class="text-sm text-gray-800" data-shippingFee="0.00" >₱ 0.00</span>
             </div>
             <div class="flex justify-between items-center font-semibold">
                 <span class="text-sm text-gray-600">Total:</span>
-                <span id="totalPrice_BrgyId" class="text-sm text-gray-800" data-totalPrice="200.00" >₱ 200.00</span>
+                <span id="totalPrice_BrgyId" class="text-sm text-gray-800" data-totalPrice="50.00" >₱ 50.00</span>
             </div>
         </div>
 
@@ -304,15 +374,15 @@ include "components/header.php";
             <h4 class="text-lg font-semibold text-gray-800 mb-4">Total</h4>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Document Price:</span>
-                <span id="documentPrice_Clearance" class="text-sm text-gray-800" data-documentPrice="150.00" >₱ 150.00</span>
+                <span id="documentPrice_Clearance" class="text-sm text-gray-800" data-documentPrice="50.00" >₱ 50.00</span>
             </div>
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm text-gray-600">Shipping Fee:</span>
-                <span id="shippingFee_Clearance" class="text-sm text-gray-800" data-shippingFee="50.00" >₱ 50.00</span>
+                <span id="shippingFee_Clearance" class="text-sm text-gray-800" data-shippingFee="0.00" >₱ 0.00</span>
             </div>
             <div class="flex justify-between items-center font-semibold">
                 <span class="text-sm text-gray-600">Total:</span>
-                <span id="totalPrice_Clearance" class="text-sm text-gray-800" data-totalPrice="200.00" >₱ 200.00</span>
+                <span id="totalPrice_Clearance" class="text-sm text-gray-800" data-totalPrice="50.00" >₱ 50.00</span>
             </div>
         </div>
 

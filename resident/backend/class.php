@@ -125,6 +125,48 @@ public function check_account($r_id) {
         }
     }
     
+
+
+
+
+
+
+
+
+    public function RequestIndigency(
+        $purpose, 
+        $address, 
+        $payment, 
+        $validIdFilename,
+        $r_id,
+        $documentPrice,
+        $shippingFee,
+        $totalPrice) {
+        $uniqueCode = uniqid('CR-', true); 
+    
+        // Prepare the SQL query
+        $query = "INSERT INTO `centralize_request` 
+                  (`cr_code`, `cr_purpose`, `cr_address`, `cr_payment`, `cr_validId`, `cr_r_id`, `cr_price`, `cr_shipping_fee`, `cr_total`, `cr_formtype`) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        // Prepare the statement
+        $stmt = $this->conn->prepare($query);
+        if (!$stmt) {
+            throw new Exception("Database error: " . $this->conn->error);
+        }
+    
+        // Bind the parameters
+        $formType = 'Barangay Indigency';
+        $stmt->bind_param("sssssiddds", $uniqueCode, $purpose, $address, $payment, $validIdFilename, $r_id, $documentPrice, $shippingFee, $totalPrice, $formType);
+    
+        // Execute the query
+        if ($stmt->execute()) {
+            // Return a success message
+            return "Barangay ID request successfully submitted";
+        } else {
+            throw new Exception("Failed to submit Barangay ID request: " . $stmt->error);
+        }
+    }
     
 
     

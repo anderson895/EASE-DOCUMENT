@@ -1,6 +1,49 @@
 $(document).ready(function() {
-
     
+    
+
+    $("#frmRequest_Indigency").on("submit", function(e) {
+        e.preventDefault(); 
+        // Show the loading spinner
+        $("#loadingSpinner_Indigency").show();
+    
+        var shippingFee = $("#shippingFee_Indigency").attr('data-shippingFee');
+        var documentPrice = $("#documentPrice_Indigency").attr('data-documentPrice');
+        var totalPrice = $("#totalPrice_Indigency").attr('data-totalPrice');
+        var formData = new FormData(this);
+    
+        formData.append('shippingFee', shippingFee);
+        formData.append('documentPrice', documentPrice);
+        formData.append('totalPrice', totalPrice);
+        formData.append("requestType", 'RequestIndigency');  
+        $.ajax({
+            url: "backend/end-points/controller.php",
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if (response['status']) {
+                    alertify.success("Clearance Added successfully!");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                }
+            }
+            
+        });
+    });
+
+
+
+
+
+
+
+
+
 $("#frmRequest_Residency").on("submit", function(e) {
     e.preventDefault(); 
     // Show the loading spinner
@@ -168,6 +211,12 @@ $('#validId_Residency').on('change', function () {
 
 
 
+$('#validId_Indigency').on('change', function () {
+    previewImage(this, 'validIdPreview_Indigency');
+});
+
+
+
 
 
     // Open modal when the button is clicked
@@ -193,13 +242,22 @@ $('#validId_Residency').on('change', function () {
     });
 
 
-    $('#OpejResidencyModal').click(function() {
+    $('#OpenResidencyModal').click(function() {
         $('#residencyModal').fadeIn();
     });
 
     // Close modal when the Cancel button is clicked
     $('.closeModal').click(function() {
         $('#residencyModal').fadeOut();
+    });
+
+    $('#OpenIndigencyModal').click(function() {
+        $('#indigencyModal').fadeIn();
+    });
+
+    // Close modal when the Cancel button is clicked
+    $('.closeModal').click(function() {
+        $('#indigencyModal').fadeOut();
     });
 
     

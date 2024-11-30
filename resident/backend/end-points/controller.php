@@ -201,6 +201,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
             
 
+        }else if ($_POST['requestType'] == 'RequestIndigency') {
+
+
+            $shippingFee = $_POST['shippingFee'];
+            $documentPrice = $_POST['documentPrice'];
+            $totalPrice = $_POST['totalPrice'];
+            
+            $purpose = $_POST['purpose'];
+            $address = $_POST['addressForm'];
+            $payment = $_POST['payment'];
+            $r_id = $_POST['r_id'];
+            
+            $validId = $_FILES['validId'];
+            
+            // Initialize response array
+            $response = [
+                'status' => 'error',
+                'message' => 'Unknown error occurred',
+            ];
+            
+            try {
+                // Define upload directory
+                $uploadDir = '../../../upload_residency/';
+            
+                // Generate unique filenames for all uploaded files (excluding directory path)
+                $validIdFilename = uniqid('validId_') . '.' . pathinfo($validId['name'], PATHINFO_EXTENSION);
+               
+                // Full paths for file uploads
+                $fullValidIdPath = $uploadDir . $validIdFilename;
+              
+            
+                // Move uploaded files
+                if (move_uploaded_file($validId['tmp_name'], $fullValidIdPath)) {
+            
+                    // Pass unique filenames (without path) to RequestClearance
+                    $response['message'] = $db->RequestIndigency(
+                        $purpose, 
+                        $address, 
+                        $payment, 
+                        $validIdFilename,
+                        $r_id,
+                        $documentPrice,
+                        $shippingFee,
+                        $totalPrice
+                    );
+            
+                    $response['status'] = 'success';
+                } else {
+                    $response['message'] = 'Failed to upload one or more files.';
+                }
+            } catch (Exception $e) {
+                $response['message'] = 'Error: ' . $e->getMessage();
+            }
+            
+            // Return JSON response
+            echo json_encode($response);
+           
+            
+
         }else{
             echo json_encode([
                 'status' => 'error',

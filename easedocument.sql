@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 04:50 AM
+-- Generation Time: Nov 30, 2024 at 07:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,11 @@ CREATE TABLE `centralize_request` (
 --
 
 INSERT INTO `centralize_request` (`cr_id`, `cr_code`, `cr_1X1_pic`, `cr_Signature`, `cr_purpose`, `cr_price`, `cr_shipping_fee`, `cr_total`, `cr_address`, `cr_payment`, `cr_validId`, `cr_proofResidency`, `cr_r_id`, `cr_formtype`, `cr_request_date`, `cr_status`) VALUES
-(7, 'CR-674a8525bc30e4.49240979', NULL, NULL, 'for work', 150.00, 50.000, 200.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674a8525bbfdf.png', 'proofResidency_674a8525bbfe4.jpeg', 17, 'Barangay Clearance', '2024-11-30 03:23:17', 'Pending');
+(13, 'CR-674a9fa118aea3.71108559', 'pic_674a9fa118516.jpg', 'signature_674a9fa118517.png', 'for requirement', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674a9fa11850d.jpg', 'proofResidency_674a9fa118514.webp', 17, 'Barangay ID', '2024-11-30 05:16:17', 'Pending'),
+(14, 'CR-674aa001cdfda8.01214306', NULL, NULL, 'for clearance', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674aa001cdcaf.png', 'proofResidency_674aa001cdcb3.webp', 17, 'Barangay Clearance', '2024-11-30 05:17:53', 'Pending'),
+(15, 'CR-674aa021091be3.03248257', NULL, NULL, 'for residency', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674aa02109073.jpg', NULL, 17, 'Barangay Residency', '2024-11-30 05:19:20', 'Pending'),
+(16, 'CR-674aa034d3b9c3.34993117', NULL, NULL, 'for indigency', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674aa034d3a67.jpg', NULL, 17, 'Barangay Indigency', '2024-11-30 05:18:44', 'Pending'),
+(17, 'CR-674aa2d31943e2.27621172', NULL, NULL, 'essfsef', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674aa2d31911b.jpg', 'proofResidency_674aa2d319120.jpg', 17, 'Barangay Clearance', '2024-11-30 05:29:55', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -79,15 +83,17 @@ CREATE TABLE `resident` (
   `r_contact_number` varchar(60) NOT NULL,
   `r_email` varchar(60) NOT NULL,
   `r_password` varchar(255) NOT NULL,
-  `r_status` int(10) NOT NULL DEFAULT 1 COMMENT '0=archive,1=Verified,2=NotVerified'
+  `r_status` int(10) NOT NULL DEFAULT 1 COMMENT '0=archive,1=Verified,2=NotVerified',
+  `r_howlong_living` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `resident`
 --
 
-INSERT INTO `resident` (`r_id`, `r_fname`, `r_mname`, `r_lname`, `r_profile`, `r_valid_ids`, `r_suffix`, `r_gender`, `r_civil_status`, `r_citizenship`, `r_bday`, `r_street`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_contact_number`, `r_email`, `r_password`, `r_status`) VALUES
-(17, 'Joshua', 'Raymundo', 'Padilla', 'file_6749527f8c75e5.99803827.jpg', 'file_6749527f8caf87.76039446.png', '', 'Male', 'Married', '', '2000-11-21', 'tibagan', 'Region III (Central Luzon)', 'Bulacan', 'Marilao', 'Santa Rosa II', '09454454744', 'andersonandyResident@gmail.com', '4f5c8899c1752211dd331cc5a956903c2b77f517f5f4d704d164e35ab70fe0dd', 1);
+INSERT INTO `resident` (`r_id`, `r_fname`, `r_mname`, `r_lname`, `r_profile`, `r_valid_ids`, `r_suffix`, `r_gender`, `r_civil_status`, `r_citizenship`, `r_bday`, `r_street`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_contact_number`, `r_email`, `r_password`, `r_status`, `r_howlong_living`) VALUES
+(17, 'Joshua', 'Raymundo', 'Padilla', 'file_6749527f8c75e5.99803827.jpg', 'file_6749527f8caf87.76039446.png', '', 'Male', 'Married', '', '2000-11-21', 'tibagan', 'Region III (Central Luzon)', 'Bulacan', 'Marilao', 'Santa Rosa II', '09454454744', 'andersonandyResident@gmail.com', '4f5c8899c1752211dd331cc5a956903c2b77f517f5f4d704d164e35ab70fe0dd', 1, '6 years'),
+(18, 'April Jane', '', 'De Leon', 'file_674aa165db8cc0.79774645.jpg', 'file_674aa165dba979.73154222.png', '', 'Female', 'Single', '', '1991-11-06', 'tibagan', 'Region III (Central Luzon)', 'Bulacan', 'Marilao', 'Santa Rosa II', '09454454744', 'apriljane@gmail.com', '81e9bb67d35131a8f3c8cc9b4fcea365241e9a236b9863253961717ebca2888d', 1, '1 Month');
 
 -- --------------------------------------------------------
 
@@ -144,13 +150,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `centralize_request`
 --
 ALTER TABLE `centralize_request`
-  MODIFY `cr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `resident`
 --
 ALTER TABLE `resident`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user`

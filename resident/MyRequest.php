@@ -11,30 +11,33 @@ include "components/header.php";
         ?>
     </div>
 </div>
-
 <div class="bg-white rounded-lg shadow-lg p-6">
    <!-- Add Resident Button -->
-   <div class="mb-4 flex items-center justify-center space-x-4">
+   <div class="mb-4 flex space-x-4 overflow-x-auto pb-4 justify-center items-center">
+       <button id="OpenBrgyIdModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center justify-center hover:bg-blue-600 transition duration-300">
+            <span class="material-icons mr-1 text-sm">post_add</span>
+            Barangay ID
+        </button>
 
-   <button id="OpenBrgyIdModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
-        <span class="material-icons mr-1 text-sm">post_add</span>
-        Barangay ID
-    </button>
+        <button id="OpenClearanceModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center justify-center hover:bg-blue-600 transition duration-300">
+            <span class="material-icons mr-1 text-sm">post_add</span>
+            Request Clearance
+        </button>
+        
+        <button id="OpenResidencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center justify-center hover:bg-blue-600 transition duration-300">
+            <span class="material-icons mr-1 text-sm">post_add</span>
+            Request Residency
+        </button>
 
-    <button id="OpenClearanceModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
-        <span class="material-icons mr-1 text-sm">post_add</span>
-        Request Clearance
-    </button>
-    <button id="OpenResidencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
-        <span class="material-icons mr-1 text-sm">post_add</span>
-        Certificate of Residency
-    </button>
-    <button id="OpenIndigencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center hover:bg-blue-600 transition duration-300">
-        <span class="material-icons mr-1 text-sm">post_add</span>
-        Certificate of Indigency
-    </button>
-    
+        <button id="OpenIndigencyModal" class="bg-blue-500 text-white py-1 px-3 text-xs rounded-md flex items-center justify-center hover:bg-blue-600 transition duration-300">
+            <span class="material-icons mr-1 text-sm">post_add</span>
+            Request Indigency
+        </button>
+    </div>
 </div>
+
+
+
 
 
 

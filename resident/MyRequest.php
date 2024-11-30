@@ -72,7 +72,7 @@ include "components/header.php";
 <!-- Modal clearanceModal -->
 <div id="indigencyModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 overflow-auto" style="display:none;">
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mx-4 max-h-screen overflow-y-auto">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Indigency</h3>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Certificate of Indigency</h3>
         <p class="text-sm text-gray-600 mb-6">Please fill out the form to request your clearance.</p>
         
         <div id="loadingSpinner_Indigency" style="display:none;">
@@ -146,7 +146,7 @@ include "components/header.php";
 <!-- Modal clearanceModal -->
 <div id="residencyModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 overflow-auto" style="display:none;">
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mx-4 max-h-screen overflow-y-auto">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Residency</h3>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Certificate of Residency</h3>
         <p class="text-sm text-gray-600 mb-6">Please fill out the form to request your clearance.</p>
         
         <div id="loadingSpinner_Residency" style="display:none;">
@@ -321,7 +321,7 @@ include "components/header.php";
 <!-- Modal clearanceModal -->
 <div id="clearanceModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50 overflow-auto" style="display:none;">
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mx-4 max-h-screen overflow-y-auto">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Clearance</h3>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request of Barangay Clearance</h3>
         <p class="text-sm text-gray-600 mb-6">Please fill out the form to request your clearance.</p>
         
         <div id="loadingSpinner_Clearance" style="display:none;">

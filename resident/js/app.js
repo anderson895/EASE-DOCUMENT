@@ -1,5 +1,39 @@
 $(document).ready(function() {
 
+    
+$("#frmRequest_Residency").on("submit", function(e) {
+    e.preventDefault(); 
+    // Show the loading spinner
+    $("#loadingSpinner_Residency").show();
+
+    var shippingFee = $("#shippingFee_Residency").attr('data-shippingFee');
+    var documentPrice = $("#documentPrice_Residency").attr('data-documentPrice');
+    var totalPrice = $("#totalPrice_Residency").attr('data-totalPrice');
+    var formData = new FormData(this);
+
+    formData.append('shippingFee', shippingFee);
+    formData.append('documentPrice', documentPrice);
+    formData.append('totalPrice', totalPrice);
+    formData.append("requestType", 'RequestResidency');  
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function(response) {
+            console.log(response);
+            if (response['status']) {
+                alertify.success("Clearance Added successfully!");
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        }
+        
+    });
+});
 
 
 $("#frmRequestBrgyId").on("submit", function(e) {
@@ -128,6 +162,12 @@ $('#proofResidency_BrgyId').on('change', function () {
 
 
 
+$('#validId_Residency').on('change', function () {
+    previewImage(this, 'validIdPreview_Residency');
+});
+
+
+
 
 
     // Open modal when the button is clicked
@@ -153,10 +193,17 @@ $('#proofResidency_BrgyId').on('change', function () {
     });
 
 
+    $('#OpejResidencyModal').click(function() {
+        $('#residencyModal').fadeIn();
+    });
+
+    // Close modal when the Cancel button is clicked
+    $('.closeModal').click(function() {
+        $('#residencyModal').fadeOut();
+    });
 
     
-
-
+    
 
 
     $('#searchInput').on('input', function() {

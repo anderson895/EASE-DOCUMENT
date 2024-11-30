@@ -87,7 +87,7 @@ if (isset($_SESSION['r_id'])) {
       </a>
 
 
-      <a href="return.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <a href="account_setting.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
       <span class="material-icons">manage_accounts</span>
           <span>Account Settings</span>
       </a>

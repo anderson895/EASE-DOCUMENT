@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
 
 
   <nav class="space-y-4 text-left lg:text-left">
-      <a href="dashboard.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <a href="index.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">dashboard</span>
           <span>Dashboard</span>
       </a>
@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
       </a>
 
       
-      <a href="customer.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <a href="history.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">history</span>
           <span>history</span>
       </a>

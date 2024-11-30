@@ -7,8 +7,18 @@ $("#frmRequestClearance").on("submit", function(e) {
   
     // Show the loading spinner
     $("#loadingSpinner").show();
-  
-    var formData = new FormData(this); 
+
+
+    var shippingFee = $("#shippingFee").attr('data-shippingFee');
+    var documentPrice = $("#documentPrice").attr('data-documentPrice');
+    var totalPrice = $("#totalPrice").attr('data-totalPrice');
+    
+    var formData = new FormData(this);
+    
+    // Append specific attributes
+    formData.append('shippingFee', shippingFee);
+    formData.append('documentPrice', documentPrice);
+    formData.append('totalPrice', totalPrice);
   
     formData.append("requestType", 'RequestClearance');  
   
@@ -25,7 +35,7 @@ $("#frmRequestClearance").on("submit", function(e) {
 
 
             if (response['status']) {
-                alertify.success("Resident Added successfully!");
+                alertify.success("Clearance Added successfully!");
               
 
                 // Delay the reload by 2 seconds (2000 milliseconds)

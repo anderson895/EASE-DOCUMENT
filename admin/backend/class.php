@@ -14,7 +14,7 @@ class global_class extends db_connect
 
     public function updateOrderStatus($orderId, $newStatus) {
         // Use a parameterized query to prevent SQL injection
-        $stmt = $this->conn->prepare("UPDATE `request_clearance` SET `rcl_status` = ? WHERE `rcl_id` = ?");
+        $stmt = $this->conn->prepare("UPDATE `centralize_request` SET `cr_status` = ? WHERE `cr_id` = ?");
         
         // Bind the parameters to the query
         $stmt->bind_param("si", $newStatus, $orderId); // "si" means string and integer
@@ -28,9 +28,9 @@ class global_class extends db_connect
     public function GetAllOrders()
     {
         // Prepare the query with sorting by order_date in descending order
-        $query = "SELECT * FROM request_clearance
-                  LEFT JOIN resident ON resident.r_id = request_clearance.rcl_r_id
-                  ORDER BY request_clearance.rcl_request_date DESC"; 
+        $query = "SELECT * FROM centralize_request
+                  LEFT JOIN resident ON resident.r_id = centralize_request.cr_r_id
+                  ORDER BY centralize_request.cr_request_date DESC"; 
     
         $result = $this->conn->query($query);
         

@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($_POST['requestType'] == 'RequestClearance') {
 
-
+            $shippingFee = $_POST['shippingFee'];
+            $documentPrice = $_POST['documentPrice'];
+            $totalPrice = $_POST['totalPrice'];
             
             $purpose = $_POST['purpose'];
             $address = $_POST['addressForm'];
@@ -46,7 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $payment, 
                         $validIdFilename, // Pass only the filename
                         $proofResidencyFilename, // Pass only the filename
-                        $r_id
+                        $r_id,
+                        $documentPrice,
+                        $shippingFee,
+                        $totalPrice
                     );
             
                     // Update response on success

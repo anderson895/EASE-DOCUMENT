@@ -28,11 +28,14 @@ public function check_account($r_id) {
     }
 
 
-    public function RequestClearance($purpose, $address, $payment, $validId, $proofResidency, $r_id) {
+    public function RequestClearance($purpose, $address, $payment, $validId, $proofResidency, $r_id, $documentPrice, $shippingFee, $totalPrice) {
+        // Generate a unique code (example: timestamp + random string)
+        $uniqueCode = uniqid('CR-', true); // Generates a unique code like CR-5f847ac3b5361
+    
         // Prepare the SQL query
-        $query = "INSERT INTO `request_clearance` 
-                  (`rcl_purpose`, `rcl_address`, `rcl_payment`, `rcl_validId`, `rcl_proofResidency`, `rcl_r_id`, `rcl_price`) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `centralize_request` 
+                  (`cr_code`, `cr_purpose`, `cr_address`, `cr_payment`, `cr_validId`, `cr_proofResidency`, `cr_r_id`, `cr_price`, `cr_shipping_fee`, `cr_total`, `cr_formtype`) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         // Prepare the statement
         $stmt = $this->conn->prepare($query);
@@ -41,10 +44,8 @@ public function check_account($r_id) {
         }
     
         // Bind the parameters
-        $stmt->bind_param("sssssid", $purpose, $address, $payment, $validId, $proofResidency, $r_id, $price);
-    
-        // Assign the price value
-        $price = 50;
+        $formType = 'Barangay Clearance';
+        $stmt->bind_param("ssssssiddds", $uniqueCode, $purpose, $address, $payment, $validId, $proofResidency, $r_id, $documentPrice, $shippingFee, $totalPrice, $formType);
     
         // Execute the query
         if ($stmt->execute()) {
@@ -55,11 +56,13 @@ public function check_account($r_id) {
         }
     }
     
+    
+    
 
 
     
     public function fetch_all_clearance_request($r_id){
-        $query = "SELECT * FROM request_clearance WHERE rcl_r_id = '$r_id'";
+        $query = "SELECT * FROM centralize_request WHERE cr_r_id = '$r_id'";
     
         $result = $this->conn->query($query);
 

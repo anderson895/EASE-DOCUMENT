@@ -57,12 +57,11 @@ include "components/header.php";
         <h3 class="text-2xl font-semibold text-gray-800 mb-4">Request Clearance</h3>
         <p class="text-sm text-gray-600 mb-6">Please fill out the form to request your clearance.</p>
         
-
         <div id="loadingSpinner" style="display:none;">
-                <div class=" absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+            <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
                 <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
             </div>
+        </div>
 
         <!-- Form -->
         <form id="frmRequestClearance">
@@ -70,14 +69,14 @@ include "components/header.php";
             <!-- Valid ID -->
             <div class="mb-6">
                 <label for="validId" class="block text-sm font-medium text-gray-700 mb-2">ID (Valid ID/School ID)</label>
-                <input type="file" id="validId" name="validId" accept="image/*" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="file" id="validId" name="validId" accept="image/*" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" required>
                 <div id="validIdPreview" class="mt-3"></div>
             </div>
 
             <!-- Proof of Residency -->
             <div class="mb-6">
                 <label for="proofResidency" class="block text-sm font-medium text-gray-700 mb-2">Proof of Residency</label>
-                <input type="file" id="proofResidency" name="proofResidency" accept="image/*" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="file" id="proofResidency" name="proofResidency" accept="image/*" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" required>
                 <div id="proofResidencyPreview" class="mt-3"></div>
             </div>
 
@@ -94,21 +93,44 @@ include "components/header.php";
             </div>
 
             <!-- Payment -->
-            <div class="mb-6">
+            <div class="mb-4">
                 <label for="payment" class="block text-sm font-medium text-gray-700 mb-2">Payment</label>
                 <select name="payment" id="payment" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="cod">Cash on Delivery</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
                 </select>
             </div>
 
-            <!-- Buttons -->
-            <div class="flex justify-end space-x-4">
-                <button id="AddResident" type="submit" class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Send Request</button>
-                <button type="button" id="closeModal" class="bg-gray-400 text-white py-2 px-6 rounded-md hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">Cancel</button>
+            
+
+        <!-- Receipt Section -->
+        <div id="receiptSection" class=" border-t pt-6">
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">Total</h4>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-gray-600">Document Price:</span>
+                <span id="documentPrice" class="text-sm text-gray-800" data-documentPrice="150.00" >₱ 150.00</span>
             </div>
-        </form>
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-gray-600">Shipping Fee:</span>
+                <span id="shippingFee" class="text-sm text-gray-800" data-shippingFee="50.00" >₱ 50.00</span>
+            </div>
+            <div class="flex justify-between items-center font-semibold">
+                <span class="text-sm text-gray-600">Total:</span>
+                <span id="totalPrice" class="text-sm text-gray-800" data-totalPrice="200.00" >₱ 200.00</span>
+            </div>
+        </div>
+
+             <!-- Buttons -->
+              <div class="border-t mt-4"></div>
+                <div class="flex justify-end space-x-4 mb-6 mt-6 ">
+                    <button id="AddResident" type="submit" class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Send Request</button>
+                    <button type="button" id="closeModal" class="bg-gray-400 text-white py-2 px-6 rounded-md hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">Cancel</button>
+                </div>
+            </form>
+
+
     </div>
 </div>
+
 
 
 

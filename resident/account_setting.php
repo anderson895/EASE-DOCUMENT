@@ -4,7 +4,7 @@
     <div class="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
         <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Resident Information</h2>
 
-        <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form id='frmAccountSetting' class="space-y-6">
             <!-- Profile Picture Section -->
             <div class="flex justify-center mb-6">
                 <div class="relative">

@@ -64,22 +64,12 @@ if (isset($_SESSION['r_id'])) {
 
   <nav class="space-y-4 text-left lg:text-left">
       
-      
-      
-<!-- 
-      <a href="barangay_clearance.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-      <span class="material-icons">description</span>
-          <span>Barangay Clearance</span>
+
+      <a href="index.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <span class="material-icons">home</span>
+          <span>Home</span>
       </a>
 
-      <a href="customer.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-          <span class="material-icons">description</span>
-          <span>Certificate of Residency</span>
-      </a>
-      <a href="product.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
-          <span class="material-icons">description</span>
-          <span>Certificate of Indigency</span>
-      </a> -->
 
       <a href="MyRequest.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">local_shipping</span>

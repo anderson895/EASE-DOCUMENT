@@ -262,9 +262,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         }else if ($_POST['requestType'] == 'UpdateAccountSetting') {
 
-            echo "<pre>";
-            print_r($_POST);
-            echo "</pre>";    
             // Validate and sanitize POST data
 $r_id = filter_input(INPUT_POST, 'r_id', FILTER_SANITIZE_STRING);
 $fname = filter_input(INPUT_POST, 'r_fname', FILTER_SANITIZE_STRING);

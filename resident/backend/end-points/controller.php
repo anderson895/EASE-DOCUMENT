@@ -260,6 +260,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            
             
 
+        }else if ($_POST['requestType'] == 'UpdateAccountSetting') {
+
+            // Validate and sanitize POST data
+$r_id = filter_input(INPUT_POST, 'r_id', FILTER_SANITIZE_STRING);
+$fname = filter_input(INPUT_POST, 'r_fname', FILTER_SANITIZE_STRING);
+$mname = filter_input(INPUT_POST, 'r_mname', FILTER_SANITIZE_STRING);
+$lname = filter_input(INPUT_POST, 'r_lname', FILTER_SANITIZE_STRING);
+$r_suffix = filter_input(INPUT_POST, 'r_suffix', FILTER_SANITIZE_STRING);
+$Gender = filter_input(INPUT_POST, 'r_gender', FILTER_SANITIZE_STRING);
+$r_civil_status = filter_input(INPUT_POST, 'r_civil_status', FILTER_SANITIZE_STRING);
+$r_bday = filter_input(INPUT_POST, 'r_bday', FILTER_SANITIZE_STRING);
+$r_contact_number = filter_input(INPUT_POST, 'r_contact_number', FILTER_SANITIZE_STRING);
+$regionId = filter_input(INPUT_POST, 'r_region', FILTER_SANITIZE_STRING);
+$provinceId = filter_input(INPUT_POST, 'r_province', FILTER_SANITIZE_STRING);
+$cityId = filter_input(INPUT_POST, 'r_municipality', FILTER_SANITIZE_STRING);
+$barangayId = filter_input(INPUT_POST, 'r_barangay', FILTER_SANITIZE_STRING);
+$r_street = filter_input(INPUT_POST, 'r_street', FILTER_SANITIZE_STRING);
+$r_email = filter_input(INPUT_POST, 'r_email', FILTER_SANITIZE_EMAIL);
+
+$uploadDirForResident = "../../../upload_resident/";
+
+$profileImgPathDb = null;  // Variable to store the profile image filename
+
+$currentProfileImg = $db->check_account($r_id);
+
+// Check if the account exists and contains profile image
+if (count($currentProfileImg) > 0) {
+    $currentProfileImg = $currentProfileImg[0]['r_profile']; // Access the first row's profile image
+} else {
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Account not found or profile image missing.'
+    ]);
+    exit;  // Stop further execution if no account is found
+}
+
+// Unlink the old profile image if it exists
+if ($currentProfileImg && file_exists($uploadDirForResident . $currentProfileImg)) {
+    unlink($uploadDirForResident . $currentProfileImg);  // Delete the old image
+}
+
+// Handle Profile Image Upload
+if (isset($_FILES['r_profile']) && $_FILES['r_profile']['error'] === UPLOAD_ERR_OK) {
+    $profileImg = $_FILES['r_profile'];
+    $profileImgName = generateUniqueFilename($profileImg['name']);  // Assuming this function generates a unique filename
+    $profileImgPath = $uploadDirForResident . $profileImgName;
+
+    // Check file upload success
+    if (move_uploaded_file($profileImg['tmp_name'], $profileImgPath)) {
+        // Successfully uploaded the profile image
+        $profileImgPathDb = $profileImgName;  // Store only the filename (not the path)
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Error uploading profile image.'
+        ]);
+        exit;  // Stop further execution if the profile image upload fails
+    }
+}
+
+try {
+    // Call the updateResident function
+    $response = $db->updateResident(
+        $r_id, $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, 
+        $r_bday, $r_contact_number, $regionId, $provinceId, $cityId, $barangayId, 
+        $r_street, $r_email, $profileImgPathDb  
+    );
+
+    // Return success message
+    echo json_encode([
+        'status' => 'success',
+        'message' => $response
+    ]);
+} catch (Exception $e) {
+    // Return error message if an exception occurs
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Error updating resident: ' . $e->getMessage()
+    ]);
+}
+
+
+
+             
         }else{
             echo json_encode([
                 'status' => 'error',
@@ -274,4 +358,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 }
 
+
+
+
+
+
+
+
+
+// Function to generate a unique filename
+function generateUniqueFilename($filename) {
+    $fileExtension = pathinfo($filename, PATHINFO_EXTENSION);
+    $uniqueName = uniqid('file_', true) . '.' . $fileExtension;
+    return $uniqueName;
+}
 ?>

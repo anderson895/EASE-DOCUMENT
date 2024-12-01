@@ -12,6 +12,64 @@ class global_class extends db_connect
     }
 
 
+    public function updateResident(
+        $r_id, $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, 
+        $r_bday, $r_contact_number, $region, $province, $city, $barangay, 
+        $r_street, $r_email, $profileImgName
+    ) {
+        // Initialize query string
+        $query = "UPDATE `resident` 
+                  SET `r_fname` = ?, `r_mname` = ?, `r_lname` = ?, `r_suffix` = ?, `r_gender` = ?, 
+                      `r_civil_status` = ?, `r_bday` = ?, `r_contact_number` = ?, `r_region` = ?, 
+                      `r_province` = ?, `r_municipality` = ?, `r_barangay` = ?, `r_street` = ?, 
+                      `r_email` = ?";
+
+        // If a profile image is provided, add `r_profile` to the query
+        if (!empty($profileImgName)) {
+            $query .= ", `r_profile` = ?";
+        }
+
+        // Add the WHERE clause
+        $query .= " WHERE `r_id` = ?";
+
+        // Prepare the query using the connection object
+        $stmt = $this->conn->prepare($query);
+        if ($stmt) {
+            // Default bind types for 14 parameters
+            $bindTypes = "ssssssssssssss";
+            $params = [
+                $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
+                $r_contact_number, $region, $province, $city, $barangay, $r_street, $r_email
+            ];
+
+            // If a profile image is provided, include it in the parameters
+            if (!empty($profileImgName)) {
+                $bindTypes .= "s"; // Add string for the profile image
+                $params[] = $profileImgName; // Add the profile image filename to the parameters
+            }
+
+            // Add the resident ID as the last parameter
+            $bindTypes .= "i"; // r_id is an integer
+            $params[] = $r_id;
+
+            // Bind parameters
+            $stmt->bind_param($bindTypes, ...$params);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                return "Resident updated successfully.";
+            } else {
+                return "Error executing the query: " . $stmt->error;
+            }
+        } else {
+            return "Error preparing the statement: " . $this->conn->error;
+        }
+    }
+    
+    
+
+
+
 public function check_account($r_id) {
 
         $query = "SELECT * FROM resident WHERE r_id = $r_id";

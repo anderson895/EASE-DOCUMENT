@@ -44,6 +44,44 @@ $(document).ready(function() {
 
 
 
+
+
+    $("#frmUpdateAccountSetting").on("submit", function(e) {
+        e.preventDefault(); 
+        // Show the loading spinner
+        $("#loadingSpinner_Indigency").show();
+    
+       
+        var formData = new FormData(this);
+
+        formData.append("requestType", 'UpdateAccountSetting');  
+        $.ajax({
+            url: "backend/end-points/controller.php",
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            // dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if (response['status']) {
+                    alertify.success("Clearance Added successfully!");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                }
+            }
+            
+        });
+    });
+    
+
+
+
+
+
+
+
 $("#frmRequest_Residency").on("submit", function(e) {
     e.preventDefault(); 
     // Show the loading spinner

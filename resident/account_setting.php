@@ -91,28 +91,41 @@
 
             <!-- Civil Status Section -->
             <div class="mb-6">
-                <label for="r_civil_status" value="<?= $result[0]['r_civil_status']?>"  class="block text-sm font-medium text-gray-700">Civil Status</label>
+                <label for="r_civil_status" class="block text-sm font-medium text-gray-700">Civil Status</label>
                 <select id="r_civil_status" name="r_civil_status" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="Widowed">Widowed</option>
-                    <option value="Divorced">Divorced</option>
+                    <option <?php if($result[0]['r_civil_status']=="Single"){ echo 'selected';} ?> value="Single">Single</option>
+                    <option <?php if($result[0]['r_civil_status']=="Married"){ echo 'selected';} ?> value="Married">Married</option>
+                    <option <?php if($result[0]['r_civil_status']=="Widowed"){ echo 'selected';} ?> value="Widowed">Widowed</option>
+                    <option <?php if($result[0]['r_civil_status']=="Divorced"){ echo 'selected';} ?> value="Divorced">Divorced</option>
                 </select>
             </div>
 
             <!-- Gender Section -->
             <div class="mb-6">
                 <label for="r_gender" class="block text-sm font-medium text-gray-700">Gender</label>
-                <select id="r_gender" value="<?= $result[0]['r_gender']?>"  name="r_gender" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
+                <select id="r_gender" name="r_gender" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option <?php if($result[0]['r_gender']=="Male"){ echo 'selected';} ?> value="Male">Male</option>
+                    <option <?php if($result[0]['r_gender']=="Female"){ echo 'selected';} ?> value="Female">Female</option>
                 </select>
             </div>
 
+
+             <!-- New Password Field -->
+             <div class="mb-6">
+                <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                <input type="password" id="newPassword" name="newPassword" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500" >
+            </div>
+
+            <!-- Confirm New Password Field -->
+            <div class="mb-6">
+                <label for="confirmNewPassword" class="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="mt-1 p-3 border border-gray-300 rounded-md w-full focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+           
+
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">Save Information</button>
+                <button type="submit" id="btnSaveResidentInfo" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">Save Information</button>
             </div>
         </form>
     </div>

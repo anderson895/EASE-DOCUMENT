@@ -41,9 +41,7 @@ $(document).ready(function() {
 
 
 
-
-
-
+    
 
 
     $("#frmUpdateAccountSetting").on("submit", function(e) {
@@ -51,6 +49,23 @@ $(document).ready(function() {
         // Show the loading spinner
         $("#loadingSpinner_Indigency").show();
     
+        var newPassword =$('#newPassword').val()
+        var confirmNewPassword =$('#confirmNewPassword').val()
+
+
+        if(newPassword){
+            if(newPassword!=confirmNewPassword){
+
+                if(!confirmNewPassword){
+                    alertify.error('Confirm New password');
+                    return;
+                }
+
+                alertify.error('Password Not Match');
+                return;
+            }
+        }
+      
        
         var formData = new FormData(this);
 
@@ -61,11 +76,11 @@ $(document).ready(function() {
             data: formData,
             processData: false,
             contentType: false,
-            // dataType: 'json',
+            dataType: 'json',
             success: function(response) {
                 console.log(response);
                 if (response['status']) {
-                    alertify.success("Clearance Added successfully!");
+                    alertify.success("Update successfully!");
                     setTimeout(function() {
                         location.reload();
                     }, 2000);

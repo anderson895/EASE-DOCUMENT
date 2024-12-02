@@ -42,6 +42,12 @@ if (isset($_SESSION['user_id'])) {
 
 </head>
 <body class="bg-gray-100 font-sans antialiased">
+
+
+<?php include "../function/pageLoader.php"; ?>
+
+
+
   <div class="min-h-screen flex flex-col lg:flex-row">
     
   <!-- Sidebar -->

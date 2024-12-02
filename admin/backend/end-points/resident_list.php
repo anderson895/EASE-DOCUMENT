@@ -42,7 +42,28 @@ if ($fetch_all_resident): ?>
                 
                 <!-- View More Button -->
 
-                <button class="bg-green-500 text-white py-1 px-2 text-sm rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+                <button class="editResidentButton bg-green-500 text-white py-1 px-2 text-sm rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+                data-r_id="<?=$resident['r_id'];?>"
+                data-r_fname="<?=$resident['r_fname'];?>"
+                data-r_mname="<?=$resident['r_mname'];?>"
+                data-r_lname="<?=$resident['r_lname'];?>"
+                data-r_profile="../upload_resident/<?=$resident['r_profile'];?>"
+                data-r_valid_ids="../upload_resident_id/<?=$resident['r_valid_ids'];?>"
+                data-r_suffix="<?=$resident['r_suffix'];?>"
+                data-r_gender="<?=$resident['r_gender'];?>"
+                data-r_civil_status="<?=$resident['r_civil_status'];?>"
+                data-r_citizenship="<?=$resident['r_citizenship'];?>"
+                data-r_bday="<?=$resident['r_bday'];?>"
+                data-r_street="<?=$resident['r_street'];?>"
+                data-r_region="<?=$resident['r_region'];?>"
+                data-r_province="<?=$resident['r_province'];?>"
+                data-r_municipality="<?=$resident['r_municipality'];?>"
+                data-r_barangay="<?=$resident['r_barangay'];?>"
+                data-r_contact_number="<?=$resident['r_contact_number'];?>"
+                data-r_email="<?=$resident['r_email'];?>"
+                data-r_howlong_living="<?=$resident['r_howlong_living'];?>"
+                
+                >
                     <span class="material-icons text-sm">edit</span> 
                 </button>
                 <button class="viewResidentModal bg-gray-500 text-white py-1 px-2 text-sm rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">

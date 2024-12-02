@@ -206,6 +206,130 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
             }
 
+        }else if ($_POST['requestType'] == 'EditResident') {
+
+           
+        
+            $r_id = filter_input(INPUT_POST, 'r_id', FILTER_SANITIZE_STRING);
+$fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+$mname = filter_input(INPUT_POST, 'mname', FILTER_SANITIZE_STRING);
+$lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+$r_suffix = filter_input(INPUT_POST, 'r_suffix', FILTER_SANITIZE_STRING);
+$r_gender = filter_input(INPUT_POST, 'Gender', FILTER_SANITIZE_STRING);
+$r_civil_status = filter_input(INPUT_POST, 'r_civil_status', FILTER_SANITIZE_STRING);
+$r_bday = filter_input(INPUT_POST, 'r_bday', FILTER_SANITIZE_STRING);
+$r_contact_number = filter_input(INPUT_POST, 'r_contact_number', FILTER_SANITIZE_STRING);
+$regionId = filter_input(INPUT_POST, 'r_region', FILTER_SANITIZE_STRING);
+$provinceId = filter_input(INPUT_POST, 'r_province', FILTER_SANITIZE_STRING);
+$cityId = filter_input(INPUT_POST, 'r_city', FILTER_SANITIZE_STRING);
+$barangayId = filter_input(INPUT_POST, 'r_barangay', FILTER_SANITIZE_STRING);
+$r_street = filter_input(INPUT_POST, 'r_street', FILTER_SANITIZE_STRING);
+$r_email = filter_input(INPUT_POST, 'r_email', FILTER_SANITIZE_EMAIL);
+$newPassword = filter_input(INPUT_POST, 'newPassword', FILTER_SANITIZE_STRING);
+$profileImgPathDb = null;
+$IdImgPathDb = null;
+
+$r_longlive = filter_input(INPUT_POST, 'longlive', FILTER_SANITIZE_STRING);
+
+// Sanitize password as well
+$r_password = filter_input(INPUT_POST, 'r_password', FILTER_SANITIZE_STRING);
+
+// Set upload directories
+$uploadDirForResident = "../../../upload_resident/";
+$uploadDirForId = "../../../upload_resident_id/";
+
+$currentProfileImg = $db->check_resident($r_id);
+$currentIdImg = $db->check_resident($r_id);
+
+// Check for existing images in the database
+if (count($currentProfileImg) > 0) {
+    $currentProfileImg = $currentProfileImg[0]['r_profile'];
+} else {
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Account not found or profile image missing.'
+    ]);
+    exit;
+}
+
+if (count($currentIdImg) > 0) {
+    $currentIdImg = $currentIdImg[0]['r_valid_ids'];
+} else {
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Account not found or ID image missing.'
+    ]);
+    exit;
+}
+
+// Unlink the old profile image only if a new profile image is uploaded
+if (isset($_FILES['profileImg']) && $_FILES['profileImg']['error'] === UPLOAD_ERR_OK) {
+    if ($currentProfileImg && file_exists($uploadDirForResident . $currentProfileImg)) {
+        unlink($uploadDirForResident . $currentProfileImg);  // Delete the old image
+    }
+    // Handle Profile Image Upload
+    $profileImg = $_FILES['profileImg'];
+    $profileImgName = generateUniqueFilename($profileImg['name']);
+    $profileImgPath = $uploadDirForResident . $profileImgName;
+
+    if (move_uploaded_file($profileImg['tmp_name'], $profileImgPath)) {
+        $profileImgPathDb = $profileImgName;
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Error uploading profile image.'
+        ]);
+        exit;
+    }
+}
+
+// Unlink the old ID image only if a new ID image is uploaded
+if (isset($_FILES['validId']) && $_FILES['validId']['error'] === UPLOAD_ERR_OK) {
+    if ($currentIdImg && file_exists($uploadDirForId . $currentIdImg)) {
+        unlink($uploadDirForId . $currentIdImg);  // Delete the old image
+    }
+    // Handle Valid ID Image Upload
+    $IdImg = $_FILES['validId'];
+    $IdImgName = generateUniqueFilename($IdImg['name']);
+    $IdImgPath = $uploadDirForId . $IdImgName;
+
+    if (move_uploaded_file($IdImg['tmp_name'], $IdImgPath)) {
+        $IdImgPathDb = $IdImgName;
+    } else {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Error uploading valid ID image.'
+        ]);
+        exit;
+    }
+}
+
+try {
+    // Call the updateResident function
+    $response = $db->updateResident(
+        $r_id, $fname, $mname, $lname, $r_suffix, $r_gender, $r_civil_status,
+        $r_bday, $r_contact_number, $regionId, $provinceId, $cityId, $barangayId,
+        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb, $r_longlive
+    );
+
+    // Return success message
+    echo json_encode([
+        'status' => 'success',
+        'message' => $response
+    ]);
+} catch (Exception $e) {
+    // Return error message if an exception occurs
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Error updating resident: ' . $e->getMessage()
+    ]);
+}
+
+            
+            
+
+
+           
         }else if ($_POST['requestType'] == 'updateResident') {
 
         } else {

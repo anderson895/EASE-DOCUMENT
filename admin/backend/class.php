@@ -95,8 +95,68 @@ class global_class extends db_connect
 
 
 
+    public function updateResident(
+        $r_id, $fname, $mname, $lname, $r_suffix, $r_gender, $r_civil_status, 
+        $r_bday, $r_contact_number, $regionId, $provinceId, $cityId, $barangayId, 
+        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb, $r_longlive
+    ) {
+        // Start building the query
+        $query = "UPDATE `resident` SET 
+            `r_fname` = '$fname', `r_mname` = '$mname', `r_lname` = '$lname', `r_suffix` = '$r_suffix', 
+            `r_gender` = '$r_gender', `r_civil_status` = '$r_civil_status', `r_bday` = '$r_bday', 
+            `r_contact_number` = '$r_contact_number', `r_region` = '$regionId', `r_province` = '$provinceId', 
+            `r_municipality` = '$cityId', `r_barangay` = '$barangayId', `r_street` = '$r_street', 
+            `r_email` = '$r_email', `r_howlong_living` = '$r_longlive'";
+    
+        // If a new password is provided, update `r_password`
+        if (!empty($newPassword)) {
+            $hashedPassword = hash('sha256', $newPassword); // Hash password using SHA-256
+            $query .= ", `r_password` = '$hashedPassword'";
+        }
+    
+        // If a profile image is provided, update `r_profile`
+        if (!empty($profileImgPathDb)) {
+            $query .= ", `r_profile` = '$profileImgPathDb'";
+        }
 
+         // If a profile image is provided, update `r_profile`
+         if (!empty($IdImgPathDb)) {
+            $query .= ", `r_valid_ids` = '$IdImgPathDb'";
+        }
+    
+        // Add the WHERE clause with the resident ID
+        $query .= " WHERE `r_id` = '$r_id'";
+    
+        // Execute the query
+        $result = $this->conn->query($query);
+    
+        // Check if the update was successful
+        if ($result) {
+            return "Resident updated successfully.";
+        } else {
+            return "Error executing the query: " . $this->conn->error;
+        }
+    }
+    
+    
+    
+    
+    public function check_resident($user_id ) {
 
+        $query = "SELECT * FROM resident WHERE r_id = $user_id";
+    
+        $result = $this->conn->query($query);
+
+        $items = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $items[] = $row;
+            }
+        }
+        return $items; 
+    }
+
+    
 
 
 public function check_account($user_id ) {
@@ -158,6 +218,38 @@ public function fetch_all_resident() {
             return "Error preparing the statement: " . $this->conn->error;
         }
     }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     public function UpdateAdminPassword($current_password, $new_password, $user_id){
         // Get the current password from the database

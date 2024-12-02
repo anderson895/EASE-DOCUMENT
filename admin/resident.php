@@ -210,7 +210,7 @@ include "components/header.php";
             <!-- Action Buttons -->
             <div class="flex space-x-4">
                 <button id="AddResident" type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Save Resident</button>
-                <button type="button" id="addResidentModal" class="bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-500">Cancel</button>
+                <button type="button" class="addResidentCloseModal bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-500">Cancel</button>
             </div>
 
         </form>

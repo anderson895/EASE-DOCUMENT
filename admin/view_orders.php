@@ -3,9 +3,9 @@ include "components/header.php";
 date_default_timezone_set('Asia/Manila');
 $dateToday = new DateTime(); 
 $formattedDate = $dateToday->format('F j, Y'); 
-$day = $dateToday->format('d'); 
+$day = ltrim($dateToday->format('d'), '0'); // Remove the leading zero
 $month = $dateToday->format('F');
-$year = $dateToday->format('Y'); 
+$year = $dateToday->format('Y');
 
 function getOrdinalSuffix($number) {
     if (!in_array(($number % 100), [11, 12, 13])) {

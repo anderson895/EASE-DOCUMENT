@@ -38,7 +38,7 @@
     <p class="text-justify">
         <span class="font-bold">Issued</span> this 
         <span class="underline">____<?=$ordinalDay?>____</span> day of 
-        <span class="underline">__________<?=$month?>______________</span>, 
+        <span class="underline">_______<?=$month?>_______</span>, 
         <?=$year?> at Barangay 434, Zone 44, Fourth District, Manila.
     </p>
 </div>

@@ -23,10 +23,10 @@
     </p>
     <p class="mt-4 text-justify">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        This is to certify that <span class="underline">______________<?=$fullName?>_________________</span>, 
-        <span class="underline">____<?=$age?>____</span> years old, is a bona fide resident of 
+        This is to certify that <span class="underline">__<?=$fullName?>____</span>, 
+        <span class="underline">__<?=$age?>__</span> years old, is a bona fide resident of 
         Barangay 434, Zone 44, Fourth District, Manila, and has been residing in the barangay for 
-        <span class="underline">____<?=$r_howlong_living?>____</span>.
+        <span class="underline">_<?=$r_howlong_living?>_</span>.
     </p>
     <p class="mt-4 text-justify">
         This certification is issued to <span class="underline"><?=$fullName?></span> upon his/her request for 

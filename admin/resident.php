@@ -167,18 +167,19 @@ include "components/header.php";
                     </select>
                 </div>
 
-
-                <div class="mb-4">
-                    <label for="longlive" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
-                    <input type="text" id="longlive" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
-                </div>
-
-
                 <div class="mb-4">
                     <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
                     <select id="barangay" name="r_barangay" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
                     </select>
                 </div>
+
+
+                
+                <div class="mb-4">
+                    <label for="longlive" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
+                    <input type="text" id="longlive" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                </div>
+
 
                 <div class="mb-4">
                     <label for="street" class="block text-sm font-medium text-gray-700">Street</label>
@@ -345,14 +346,15 @@ include "components/header.php";
 
 
                 <div class="mb-4">
-                    <label for="r_howlong_living" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
-                    <input type="text" id="r_howlong_living" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" >
+                    <label for="r_barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
+                    <input id="r_barangay" name="r_barangay" type="text" class="mt-1 p-2 border border-gray-300 rounded-md w-full"  />
                 </div>
 
 
+
                 <div class="mb-4">
-                    <label for="r_barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
-                    <input id="r_barangay" name="r_barangay" type="text" class="mt-1 p-2 border border-gray-300 rounded-md w-full"  />
+                    <label for="r_howlong_living" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
+                    <input type="text" id="r_howlong_living" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" >
                 </div>
 
 

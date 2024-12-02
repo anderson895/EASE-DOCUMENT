@@ -141,7 +141,7 @@ $('#validId').on('change', function(event) {
    });
 
    // Close the modal
-   $('#addResidentCloseModal').click(function() {
+   $('.addResidentCloseModal').click(function() {
        $('#addResidentModal').fadeOut();
    });
 

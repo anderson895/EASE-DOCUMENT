@@ -1,9 +1,9 @@
 <?php
 
 define("db_host", "localhost");
-define("db_user", "root");
-define("db_pass", "");
-define("db_name", "easedocument");
+define("db_user", "u800275806_easedocument");
+define("db_pass", "u800275806_easedocument");
+define("db_name", "Yd/iNI|NY=7h");
 
 class db_connect
 {

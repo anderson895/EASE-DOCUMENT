@@ -12,7 +12,7 @@ $(document).ready(function () {
         type: "POST",
         url: "backend/end-points/controller.php",
         data: serializedData,
-        // dataType: 'json', // Ensure the response is parsed as JSON
+        dataType: 'json', // Ensure the response is parsed as JSON
         success: function (response) {
             console.log(response);
     

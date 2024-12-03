@@ -3,7 +3,7 @@
 define("db_host", "localhost");
 define("db_user", "u800275806_easedocument");
 define("db_pass", "u800275806_easedocument");
-define("db_name", "Yd/iNI|NY=7h");
+define("db_name", "Aasedocument2025");
 
 class db_connect
 {

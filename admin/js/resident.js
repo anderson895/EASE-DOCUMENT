@@ -1,6 +1,76 @@
 $(document).ready(function() {
 
 
+
+
+
+// Show the modal with fade-in effect
+$('.deleteResidentButton').click(function() {
+    console.log('click');
+
+    $('#TargetdelResidentId').val($(this).data('r_id'))
+    $('#deleteConfirmationModal').fadeIn();
+});
+
+// Close the modal
+$('.cancelDeleteResident').click(function() {
+    $('#deleteConfirmationModal').fadeOut();
+});
+
+
+$("#frmEditResident").on("submit", function(e) {
+    e.preventDefault(); 
+    $("#editResidentloadingSpinner").show();
+    var formData = new FormData(this); 
+  
+    formData.append("requestType", 'EditResident');  
+  
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json', 
+        success: function(response) {
+            console.log(response);
+
+
+            if (response['status']) {
+                alertify.success("Resident Update successfully!");
+              
+
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);  
+            }
+        }
+        
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $("#frmAddResident").on("submit", function(e) {
     e.preventDefault(); 
     $("#loadingSpinner").show();
@@ -127,52 +197,6 @@ $('#validId').on('change', function(event) {
 
 
 
-
-
-   // Show the modal with fade-in effect
-   $('.deleteResidentButton').click(function() {
-    console.log('click');
-
-    $('#TargetdelResidentId').val($(this).data('r_id'))
-    $('#deleteConfirmationModal').fadeIn();
-});
-
-// Close the modal
-$('.cancelDeleteResident').click(function() {
-    $('#deleteConfirmationModal').fadeOut();
-});
-
-
-$("#frmEditResident").on("submit", function(e) {
-    e.preventDefault(); 
-    $("#editResidentloadingSpinner").show();
-    var formData = new FormData(this); 
-  
-    formData.append("requestType", 'EditResident');  
-  
-    $.ajax({
-        url: "backend/end-points/controller.php",
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: 'json', 
-        success: function(response) {
-            console.log(response);
-
-
-            if (response['status']) {
-                alertify.success("Resident Update successfully!");
-              
-
-                setTimeout(function() {
-                    location.reload();
-                }, 2000);  
-            }
-        }
-        
-    });
-});
 
 
 

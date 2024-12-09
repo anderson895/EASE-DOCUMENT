@@ -112,9 +112,8 @@ if ($fetch_all_resident): ?>
 
 
 
-
 <!-- Modal -->
-<div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 opacity-0 invisible transition-opacity duration-300" style="display:none;">
+<div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 opacity-0 invisible transition-opacity duration-300">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
@@ -149,25 +148,24 @@ if ($fetch_all_resident): ?>
 
 
 
+
 <script>
-    
-  // Show the modal with fade-in effect
-  $('.deleteResidentButton').click(function() {
+    // Show the modal with fade-in effect
+$('.deleteResidentButton').click(function() {
     const residentId = $(this).data('r_id');
     console.log(residentId);
 
     $('#TargetdelResidentId').val(residentId);
-    $('#deleteConfirmationModal').show(); // Show modal with fade-in effect
+    $('#deleteConfirmationModal').removeClass('opacity-0 invisible').addClass('opacity-100 visible'); // Show modal with fade-in effect
 });
 
 // Close the modal
 $('.cancelDeleteResident').click(function() {
     console.log('Close Modal');
-    $('#deleteConfirmationModal').hide(); // Hide modal with fade-out effect
+    $('#deleteConfirmationModal').removeClass('opacity-100 visible').addClass('opacity-0 invisible'); // Fade out the modal
 });
 
-
-// Handle the confirm delete button click (not form submission)
+// Handle the confirm delete button click
 $('#confirmDeleteResident').click(function() {
     // Show the loading spinner
     $("#DeleteResidentloadingSpinner").show();
@@ -214,7 +212,7 @@ $('#confirmDeleteResident').click(function() {
     });
 
     // Close the modal after initiating the request
-    $('#deleteConfirmationModal').fadeOut();
+    $('#deleteConfirmationModal').removeClass('opacity-100 visible').addClass('opacity-0 invisible'); // Fade out the modal
 });
 
 

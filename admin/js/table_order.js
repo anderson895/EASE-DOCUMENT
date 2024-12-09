@@ -1,4 +1,4 @@
-console.log('updated');
+
 
 // Search functionality
 $('#searchInput').on('input', function() {
@@ -10,6 +10,9 @@ $('#searchInput').on('input', function() {
 
 // Initialize functions when document is ready
 $(document).ready(function() {
+
+    console.log('updated');
+
     fetchOrders();
     AutoRefresh();
     bindTableFilter();

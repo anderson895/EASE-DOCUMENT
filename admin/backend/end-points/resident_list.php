@@ -86,6 +86,7 @@ $('.deleteResidentButton').click(function() {
 
 // Close the modal
 $('.cancelDeleteResident').click(function() {
+    console.log('closeModal');
     $('#deleteConfirmationModal').fadeOut();
 });
 

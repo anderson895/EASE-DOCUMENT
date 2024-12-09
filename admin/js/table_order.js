@@ -1,4 +1,14 @@
 $(document).ready(function() {
+
+    
+// // Search functionality
+//    $('#searchInput').on('input', function() {
+//     var value = $(this).val().toLowerCase();
+//     $('#userTable tbody tr').filter(function() {
+//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+//     });
+// });
+
     // Initialize functions when document is ready
     fetchOrders();
     AutoRefresh();

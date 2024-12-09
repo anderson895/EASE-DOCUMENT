@@ -235,13 +235,6 @@ $('#r_valid_ids').on('change', function(event) {
 
 
 
-   // Search functionality
-   $('#searchInput').on('input', function() {
-       var value = $(this).val().toLowerCase();
-       $('#userTable tbody tr').filter(function() {
-           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-       });
-   });
 
 
 

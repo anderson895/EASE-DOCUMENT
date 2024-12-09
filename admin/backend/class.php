@@ -139,10 +139,10 @@ class global_class extends db_connect
     }
     
 
-    public function DeleteResident($r_id, $residentId){
+    public function DeleteResident($residentId){
          // Start building the query
          $query = "UPDATE `resident` SET 
-         `r_status` = '0'";
+         `r_status` = '0' where r_id ='$residentId'";
      
      // Execute the query
      $result = $this->conn->query($query);

@@ -20,10 +20,11 @@ if ($fetch_all_resident): ?>
         $resident['r_province'];
         
 
-        $fullname = $resident['r_fname'] . 
-        ($resident['r_mname'] ? ' ' . $resident['r_mname'] : '') . 
-        ' ' . $resident['r_lname'] . 
-        ($resident['r_suffix'] ? ' ' . $resident['r_suffix'] : '');
+        $fullname = $resident['r_lname'] . 
+        ($resident['r_suffix'] ? ' ' . $resident['r_suffix'] : '') . 
+        ', ' . $resident['r_fname'] . 
+        ($resident['r_mname'] ? ' ' . $resident['r_mname'] : '');
+
 
        
         $valid_id=$resident['r_valid_ids'];

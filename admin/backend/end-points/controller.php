@@ -323,12 +323,17 @@ try {
     ]);
 }
 
-            
-            
 
-
-           
-        }else if ($_POST['requestType'] == 'updateResident') {
+        } else if ($_POST['requestType'] == 'DeleteResident') {
+            $residentId = filter_input(INPUT_POST, 'residentId', FILTER_SANITIZE_STRING);
+            
+            $response = $db->DeleteResident($r_id, $residentId);
+        
+            // Return success message
+            echo json_encode([
+                'status' => 'success',
+                'message' => $response
+            ]);
 
         } else {
             echo json_encode([

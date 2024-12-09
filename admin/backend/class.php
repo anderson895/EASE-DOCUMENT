@@ -138,6 +138,22 @@ class global_class extends db_connect
         }
     }
     
+
+    public function DeleteResident($r_id, $residentId){
+         // Start building the query
+         $query = "UPDATE `resident` SET 
+         `r_status` = '0'";
+     
+     // Execute the query
+     $result = $this->conn->query($query);
+ 
+     // Check if the update was successful
+     if ($result) {
+         return "Resident Remove successfully.";
+     } else {
+         return "Error executing the query: " . $this->conn->error;
+     }
+    }
     
     
     

@@ -28,16 +28,18 @@ class global_class extends db_connect
     public function totalRequestbarangayID() {
         // Use a parameterized query to prevent SQL injection
         $stmt = $this->conn->prepare("
-            SELECT 
-                cr_formtype,
-                COUNT(*) AS total
-            FROM 
-                centralize_request
-            WHERE
-                cr_formtype IN ('Barangay ID', 'Barangay Clearance', 'Barangay Residency', 'Barangay Indigency')
-            GROUP BY 
-                cr_formtype
-        ");
+        SELECT 
+            cr_formtype,
+            COUNT(*) AS total
+        FROM 
+            centralize_request
+        WHERE
+            cr_formtype IN ('Barangay ID', 'Barangay Clearance', 'Barangay Residency', 'Barangay Indigency')
+            AND (cr_status != 'Canceled' AND cr_status != 'Rejected')
+        GROUP BY 
+            cr_formtype
+    ");
+    
       
         // Execute the query
         if ($stmt->execute()) {

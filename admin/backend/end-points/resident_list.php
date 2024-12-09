@@ -109,9 +109,11 @@ if ($fetch_all_resident): ?>
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
 
-            <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
+          
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
+            
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Confirm Deletion</h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-500">Are you sure you want to Remove this resident?</p>
@@ -125,71 +127,3 @@ if ($fetch_all_resident): ?>
         </form>
     </div>
 </div>
-
-
-<script>
-    // Show the modal with fade-in effect
-    $('.deleteResidentButton').click(function() {
-        const residentId = $(this).data('r_id');
-        console.log(residentId);
-
-        $('#TargetdelResidentId').val(residentId);
-        $('#deleteConfirmationModal').fadeIn(); // Show modal
-    });
-
-    // Close the modal
-    $('.cancelDeleteResident').click(function() {
-        console.log('Close Modal');
-        $('#deleteConfirmationModal').fadeOut(); // Hide modal
-    });
-
-    // Handle the confirm delete button click (not form submission)
-    $('#confirmDeleteResident').click(function() {
-        // Show the loading spinner
-        $("#DeleteResidentloadingSpinner").show();
-
-        // Disable the button to prevent multiple clicks
-        $(this).prop('disabled', true);
-
-        // Get the resident ID from the input
-        const residentId = $('#TargetdelResidentId').val();
-
-        // Prepare data to send to the server
-        const formData = new FormData();
-        formData.append("requestType", 'DeleteResident');
-        formData.append("residentId", residentId);
-
-        $.ajax({
-            url: "backend/end-points/controller.php",
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            dataType: 'json',
-            success: function(response) {
-                console.log(response);
-
-                if (response.status) {
-                    alertify.success("Resident Deleted successfully!");
-                    setTimeout(function() {
-                        location.reload(); // Reload page after success
-                    }, 2000);
-                } else {
-                    alertify.error(response.message || "Failed to delete resident. Please try again.");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error("AJAX Error:", error);
-                alertify.error("An error occurred while processing your request. Please try again.");
-            },
-            complete: function() {
-                // Hide the loading spinner and re-enable the button
-                $("#DeleteResidentloadingSpinner").hide();
-                $('#confirmDeleteResident').prop('disabled', false);
-            }
-        });
-
-        // Close the modal after initiating the request
-        $('#deleteConfirmationModal').fadeOut();
-    });
-</script>

@@ -343,13 +343,13 @@ $('#validId_Indigency').on('change', function () {
 
 
     $('.cancelRequest').click(function() {
-        console.log('cancelRequest');
+        console.log('cancelRequestsssss');
         // $('#cancelOrderModal').fadeIn();
     });
     
     // Close modal when the Cancel button is clicked
     $('.closeModal').click(function() {
-        console.log('closeModal');
+        console.log('closeModalsss');
         // $('#cancelOrderModal').fadeOut();
     });
     

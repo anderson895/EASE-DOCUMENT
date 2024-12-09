@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2024 at 11:52 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 09, 2024 at 12:34 PM
+-- Server version: 10.11.10-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `easedocument`
+-- Database: `u800275806_easedocument`
 --
 
 -- --------------------------------------------------------
@@ -54,7 +54,7 @@ INSERT INTO `centralize_request` (`cr_id`, `cr_code`, `cr_1X1_pic`, `cr_Signatur
 (18, 'CR-674acedc76f6e0.95656341', 'pic_674acedc76902.jpg', 'signature_674acedc76903.png', 'for my id', 50.00, 0.000, 50.000, '634 marilao bulacan', 'Cash on Delivery', 'validId_674acedc768fd.png', 'proofResidency_674acedc76901.jpeg', 17, 'Barangay ID', '2024-11-30 08:40:21', 'Shipped'),
 (19, 'CR-674acf3b0a69c4.84370270', NULL, NULL, 'for work', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674acf3b0a34d.jpg', 'proofResidency_674acf3b0a354.jpeg', 17, 'Barangay Clearance', '2024-11-30 08:40:48', 'Delivered'),
 (20, 'CR-674acfb6adc856.06902754', NULL, NULL, 'awdaw', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674acfb6ada0f.jpg', NULL, 17, 'Barangay Residency', '2024-11-30 08:41:53', 'Rejected'),
-(21, 'CR-674acfc71d3538.11932289', NULL, NULL, 'sfse', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674acfc71d1a0.jpeg', NULL, 17, 'Barangay Indigency', '2024-12-02 09:22:54', 'Approved');
+(21, 'CR-674acfc71d3538.11932289', NULL, NULL, 'sfse', 50.00, 0.000, 50.000, 'Region III (Central Luzon) Bulacan Marilao Santa Rosa II tibagan', 'Cash on Delivery', 'validId_674acfc71d1a0.jpeg', NULL, 17, 'Barangay Indigency', '2024-12-09 06:22:53', 'Delivered');
 
 -- --------------------------------------------------------
 
@@ -82,18 +82,17 @@ CREATE TABLE `resident` (
   `r_contact_number` varchar(60) NOT NULL,
   `r_email` varchar(60) NOT NULL,
   `r_password` varchar(255) NOT NULL,
-  `r_status` int(10) NOT NULL DEFAULT 1 COMMENT '0=archive,1=Verified,2=NotVerified',
-  `r_howlong_living` varchar(60) DEFAULT NULL
+  `r_status` int(10) NOT NULL DEFAULT 1 COMMENT '0=archive,1=Verified,2=NotVerified'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `resident`
 --
 
-INSERT INTO `resident` (`r_id`, `r_fname`, `r_mname`, `r_lname`, `r_profile`, `r_valid_ids`, `r_suffix`, `r_gender`, `r_civil_status`, `r_citizenship`, `r_bday`, `r_street`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_contact_number`, `r_email`, `r_password`, `r_status`, `r_howlong_living`) VALUES
-(17, 'joshua', 'raymundoss', 'padilla', 'file_674c3374af7dc0.98625347.jpg', 'file_674d7a0225c6e9.10522715.png', '', 'Female', 'Widowed', '', '2000-11-21', 'tibagans', 'Region III (Central Luzon)', 'Bulacans', 'marilao', 'Santa Rosa II', '09454454744', 'andersonandyResident@gmail.com', '4f5c8899c1752211dd331cc5a956903c2b77f517f5f4d704d164e35ab70fe0dd', 1, '6 years'),
-(18, 'Mary sss', 'loi', 'Ricalde', 'file_674d79049d7f37.77014032.jpg', 'file_674d79ba0cdeb6.40318555.jpg', 'jr', 'Male', 'Married', '', '1991-11-06', 'eeeeeee', 'Region III (Central Luzon)', 'Bulacan', 'marilao', 'Santa Rosa II', '09454454744', 'apriljane@gmail.com', '81e9bb67d35131a8f3c8cc9b4fcea365241e9a236b9863253961717ebca2888d', 1, '1Month'),
-(19, 'Denise', '', 'Esteban', 'file_674d7c3e2144d7.56967961.jpg', 'file_674d7c3e2160b1.60933829.jpeg', 'jr', 'Female', 'Single', '', '2000-12-02', 'awwadawdaw', 'Region III (Central Luzon)', 'Bulacan', 'Hagonoy', 'San Agustin', '09454454744', 'denise@gmail.com', '62f8132ed5903ec5ffb90973317cfe6fc15fbfa4e4729d28e92758c46e47ec08', 1, '42424');
+INSERT INTO `resident` (`r_id`, `r_fname`, `r_mname`, `r_lname`, `r_profile`, `r_valid_ids`, `r_suffix`, `r_gender`, `r_civil_status`, `r_citizenship`, `r_bday`, `r_street`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_contact_number`, `r_email`, `r_password`, `r_status`) VALUES
+(17, 'joshua', 'raymundoss', 'padilla', 'file_674e8b622d31f6.81216367.jpg', 'file_674d7a0225c6e9.10522715.png', '', 'Female', 'Widowed', '', '2000-11-21', 'tibagans', 'Region III (Central Luzon)', 'Bulacans', 'marilao', 'Santa Rosa II', '09454454744', 'andersonandyResident@gmail.com', '4f5c8899c1752211dd331cc5a956903c2b77f517f5f4d704d164e35ab70fe0dd', 1),
+(18, 'Mary sss', 'loi', 'Ricalde', 'file_674d79049d7f37.77014032.jpg', 'file_674d79ba0cdeb6.40318555.jpg', 'jr', 'Male', 'Married', '', '1991-11-06', 'eeeeeee', 'Region III (Central Luzon)', 'Bulacan', 'marilao', 'Santa Rosa II', '09454454744', 'apriljane@gmail.com', '81e9bb67d35131a8f3c8cc9b4fcea365241e9a236b9863253961717ebca2888d', 1),
+(19, 'Denise', '', 'Esteban', 'file_674d7c3e2144d7.56967961.jpg', 'file_674d7c3e2160b1.60933829.jpeg', 'jr', 'Female', 'Single', '', '2000-12-02', 'awwadawdaw', 'Region III (Central Luzon)', 'Bulacan', 'Hagonoy', 'San Agustin', '09454445484', 'denise@gmail.com', '62f8132ed5903ec5ffb90973317cfe6fc15fbfa4e4729d28e92758c46e47ec08', 1);
 
 -- --------------------------------------------------------
 

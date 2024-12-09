@@ -284,30 +284,36 @@ $('#r_valid_ids').on('change', function(event) {
 
 
 
-// Show the modal with fade-in effect
-$('.deleteResidentButton').click(function() {
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+
+  // Show the modal with fade-in effect
+  $('.deleteResidentButton').click(function() {
     const residentId = $(this).data('r_id');
     console.log(residentId);
 
     $('#TargetdelResidentId').val(residentId);
-    
-    // Show the modal and apply fade-in effect
-    $('#deleteConfirmationModal')
-        .show() // Display the modal
-        .removeClass('opacity-0 invisible') // Remove opacity and invisible
-        .addClass('opacity-100 visible'); // Apply opacity for fade-in effect
+    $('#deleteConfirmationModal').fadeIn(); // Show modal with fade-in effect
 });
 
 // Close the modal
 $('.cancelDeleteResident').click(function() {
     console.log('Close Modal');
-    
-    // Hide the modal with fade-out effect
-    $('#deleteConfirmationModal')
-        .removeClass('opacity-100 visible') // Remove opacity and visible
-        .addClass('opacity-0 invisible') // Apply opacity for fade-out effect
-        .delay(300) // Wait for the fade-out transition
-        .hide(); // Finally hide the modal
+    $('#deleteConfirmationModal').fadeOut(); // Hide modal with fade-out effect
 });
 
 
@@ -361,24 +367,7 @@ $('#confirmDeleteResident').click(function() {
     $('#deleteConfirmationModal').fadeOut();
 });
 
-
-
-
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

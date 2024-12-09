@@ -336,14 +336,3 @@ $('#validId_Indigency').on('change', function () {
 
 
 
-
-    $('.cancelRequest').click(function() {
-        console.log('cancelOrder');
-        // $('#cancelOrderModal').fadeIn();
-    });
-
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        console.log('closeModal');
-        // $('#cancelOrderModal').fadeOut();
-    });

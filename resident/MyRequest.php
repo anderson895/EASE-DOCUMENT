@@ -405,7 +405,7 @@ include "components/header.php";
 
 
 <!-- Modal -->
-<div id="cancelOrderModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
+<div id="cancelOrderModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center" style="display:none;">
     <div class="bg-white p-6 rounded-lg w-1/3">
         <h2 class="text-lg font-semibold mb-4">Are you sure you want to cancel this request?</h2>
         <div class="flex justify-end gap-4">
@@ -420,7 +420,19 @@ include "components/header.php";
 
 
 
+<script>
+    $(document).ready(function() {
+    $('.cancelOrder').click(function() {
+        $('#cancelOrderModal').fadeIn();
+    });
 
+    // Close modal when the Cancel button is clicked
+    $('.closeModal').click(function() {
+        $('#cancelOrderModal').fadeOut();
+    });
+
+});
+</script>
 
 
 

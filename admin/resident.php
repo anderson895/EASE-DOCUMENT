@@ -141,8 +141,16 @@ include "components/header.php";
 
                 <div class="mb-4">
                     <label for="contact_number" class="block text-sm font-medium text-gray-700">Contact Number</label>
-                    <input type="text" id="contact_number" name="r_contact_number" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
+                    <input 
+                        type="text" 
+                        id="contact_number" 
+                        name="r_contact_number" 
+                        class="mt-1 p-2 border border-gray-300 rounded-md w-full" 
+                        pattern="\d{11}" 
+                        title="Please enter an 11-digit number." 
+                        required>
                 </div>
+
             </div>
 
            <!-- Address -->

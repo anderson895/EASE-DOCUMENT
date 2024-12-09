@@ -1,17 +1,6 @@
 $(document).ready(function() {
     
-    $('.cancelRequest').click(function() {
-        var requestId = $(this).attr('data-requestId');
-        $('#requestId').val(requestId)
-        $('#cancelOrderModal').fadeIn();
-    });
-    
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        console.log('closeModal');
-        $('#cancelOrderModal').fadeOut();
-    });
-
+   
 
     
     $("#frmCancelRequest").on("submit", function(e) {
@@ -40,6 +29,7 @@ $(document).ready(function() {
             }
             
         });
+        
     });
 
 

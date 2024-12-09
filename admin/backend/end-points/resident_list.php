@@ -157,13 +157,13 @@ if ($fetch_all_resident): ?>
     console.log(residentId);
 
     $('#TargetdelResidentId').val(residentId);
-    $('#deleteConfirmationModal').fadeIn(); // Show modal with fade-in effect
+    $('#deleteConfirmationModal').show(); // Show modal with fade-in effect
 });
 
 // Close the modal
 $('.cancelDeleteResident').click(function() {
     console.log('Close Modal');
-    $('#deleteConfirmationModal').fadeOut(); // Hide modal with fade-out effect
+    $('#deleteConfirmationModal').hide(); // Hide modal with fade-out effect
 });
 
 

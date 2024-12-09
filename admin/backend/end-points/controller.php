@@ -80,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $r_street = filter_input(INPUT_POST, 'r_street', FILTER_SANITIZE_STRING);
             $r_email = filter_input(INPUT_POST, 'r_email', FILTER_SANITIZE_EMAIL);
 
-            $r_longlive = filter_input(INPUT_POST, 'longlive', FILTER_SANITIZE_EMAIL);
-
+           
             
             $r_password = $_POST['r_password'];
 
@@ -193,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $response = $db->addResident(
                     $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, 
                     $r_bday, $r_contact_number,$region, $province, $city, $barangay, 
-                    $r_street, $r_email, $r_password, $profileImgName, $validIdName,$r_longlive
+                    $r_street, $r_email, $r_password, $profileImgName, $validIdName
                 );
                 echo json_encode([
                     'status' => 'success',
@@ -229,7 +228,6 @@ $newPassword = filter_input(INPUT_POST, 'newPassword', FILTER_SANITIZE_STRING);
 $profileImgPathDb = null;
 $IdImgPathDb = null;
 
-$r_longlive = filter_input(INPUT_POST, 'longlive', FILTER_SANITIZE_STRING);
 
 // Sanitize password as well
 $r_password = filter_input(INPUT_POST, 'r_password', FILTER_SANITIZE_STRING);
@@ -309,7 +307,7 @@ try {
     $response = $db->updateResident(
         $r_id, $fname, $mname, $lname, $r_suffix, $r_gender, $r_civil_status,
         $r_bday, $r_contact_number, $regionId, $provinceId, $cityId, $barangayId,
-        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb, $r_longlive
+        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb
     );
 
     // Return success message

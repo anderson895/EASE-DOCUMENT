@@ -98,7 +98,7 @@ class global_class extends db_connect
     public function updateResident(
         $r_id, $fname, $mname, $lname, $r_suffix, $r_gender, $r_civil_status, 
         $r_bday, $r_contact_number, $regionId, $provinceId, $cityId, $barangayId, 
-        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb, $r_longlive
+        $r_street, $r_email, $newPassword, $profileImgPathDb, $IdImgPathDb
     ) {
         // Start building the query
         $query = "UPDATE `resident` SET 
@@ -106,7 +106,7 @@ class global_class extends db_connect
             `r_gender` = '$r_gender', `r_civil_status` = '$r_civil_status', `r_bday` = '$r_bday', 
             `r_contact_number` = '$r_contact_number', `r_region` = '$regionId', `r_province` = '$provinceId', 
             `r_municipality` = '$cityId', `r_barangay` = '$barangayId', `r_street` = '$r_street', 
-            `r_email` = '$r_email', `r_howlong_living` = '$r_longlive'";
+            `r_email` = '$r_email'";
     
         // If a new password is provided, update `r_password`
         if (!empty($newPassword)) {
@@ -295,7 +295,7 @@ public function fetch_all_resident() {
     public function addResident(
         $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
         $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
-        $r_email, $r_password, $profileImgPathDb, $validIdPathDb,$r_longlive
+        $r_email, $r_password, $profileImgPathDb, $validIdPathDb
     ) {
         // Hash the password using SHA-256
         $hashedPassword = hash('sha256', $r_password);
@@ -304,17 +304,17 @@ public function fetch_all_resident() {
         $query = "INSERT INTO `resident` 
                   (`r_fname`, `r_mname`, `r_lname`, `r_suffix`, `r_gender`, `r_civil_status`, `r_bday`, 
                    `r_contact_number`, `r_region`, `r_province`, `r_municipality`, `r_barangay`, `r_street`, 
-                   `r_email`, `r_password`, `r_profile`, `r_valid_ids`,`r_howlong_living`) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                   `r_email`, `r_password`, `r_profile`, `r_valid_ids`) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         // Prepare the statement
         if ($stmt = $this->conn->prepare($query)) {
             // Bind the parameters to the prepared statement
             $stmt->bind_param(
-                "ssssssssssssssssss", 
+                "sssssssssssssssss", 
                 $fname, $mname, $lname, $r_suffix, $Gender, $r_civil_status, $r_bday, 
                 $r_contact_number, $region, $r_province, $city, $r_barangay, $r_street, 
-                $r_email, $hashedPassword, $profileImgPathDb, $validIdPathDb,$r_longlive
+                $r_email, $hashedPassword, $profileImgPathDb, $validIdPathDb
             );
         
             // Execute the statement

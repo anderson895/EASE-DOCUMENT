@@ -175,10 +175,7 @@ include "components/header.php";
 
 
                 
-                <div class="mb-4">
-                    <label for="longlive" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
-                    <input type="text" id="longlive" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" required>
-                </div>
+               
 
 
                 <div class="mb-4">
@@ -352,10 +349,6 @@ include "components/header.php";
 
 
 
-                <div class="mb-4">
-                    <label for="r_howlong_living" class="block text-sm font-medium text-gray-700">How long have you lived in Barangay 434?</label>
-                    <input type="text" id="r_howlong_living" name="longlive" class="mt-1 p-2 border border-gray-300 rounded-md w-full" >
-                </div>
 
 
                 <div class="mb-4">

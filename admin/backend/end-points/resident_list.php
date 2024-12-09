@@ -109,11 +109,9 @@ if ($fetch_all_resident): ?>
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
 
-          
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
-            
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Confirm Deletion</h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-500">Are you sure you want to Remove this resident?</p>

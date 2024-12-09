@@ -80,10 +80,14 @@ if (isset($_SESSION['user_id'])) {
       </a>
 
       
-      <a href="history.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
+      <!-- <a href="history.php" class="flex items-center lg:justify-start space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">history</span>
           <span>history</span>
-      </a>
+      </a> -->
+
+
+
+
       <a href="settings.php" class="flex items-center lg:justify-start  space-x-3 text-gray-600 hover:text-blue-500 hover:bg-gray-100 px-4 py-2 rounded-md transition-all duration-300">
           <span class="material-icons">settings</span>
           <span>settings</span>

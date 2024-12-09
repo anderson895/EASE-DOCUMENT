@@ -337,7 +337,7 @@ $('#validId_Indigency').on('change', function () {
 
 
 
-    $('.cancelOrder').click(function() {
+    $('.cancelRequest').click(function() {
         console.log('cancelOrder');
         // $('#cancelOrderModal').fadeIn();
     });

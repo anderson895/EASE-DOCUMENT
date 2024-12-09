@@ -35,7 +35,7 @@ if (isset($_GET['step'])) {
     </div>
 
 
-<div class="overflow-x-auto bg-white shadow-md rounded-lg p-6" id="">
+<div class="overflow-x-auto bg-white shadow-md rounded-lg p-6" id="recordTable">
     <h2 class="text-xl font-semibold text-gray-700 mb-4"></h2>
 
 

@@ -42,7 +42,7 @@ if ($fetch_all_clearance_request): ?>
                 </button> -->
                 
                 <button <?=$editFunction?> class="<?=$tailwindclassCancel?>">
-                    <span class="material-icons text-sm">delete</span> Cancel
+                    <span class="material-icons text-sm">delete</span>
                 </button>
             </div>
         </div>

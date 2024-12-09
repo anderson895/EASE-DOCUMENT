@@ -65,9 +65,7 @@ if ($fetch_all_resident): ?>
                 >
                     <span class="material-icons text-sm">edit</span> 
                 </button>
-                <button class="viewResidentModal bg-gray-500 text-white py-1 px-2 text-sm rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-                    <span class="material-icons text-sm">visibility</span> 
-                </button>
+              
                 <button class="bg-red-500 text-white py-1 px-2 text-sm rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
                     <span class="material-icons text-sm">delete</span> 
                 </button>

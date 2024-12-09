@@ -42,7 +42,7 @@ if (isset($_GET['step'])) {
     <!-- border-b-2 border-red-500 text-red-500 -->
     <!-- Search Box and Table -->
     <div class="flex justify-between items-center mb-4">
-        <input type="text" placeholder="Search..." class="w-1/4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 text-sm">
+        <input type="text" id="searchInput" placeholder="Search..." class="w-1/4 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 text-sm">
     </div>
 
     <table class="min-w-full table-auto">

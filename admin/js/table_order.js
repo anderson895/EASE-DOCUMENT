@@ -1,23 +1,25 @@
 $(document).ready(function() {
 
     
-// // Search functionality
-//    $('#searchInput').on('input', function() {
-//     var value = $(this).val().toLowerCase();
-//     $('#userTable tbody tr').filter(function() {
-//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-//     });
-// });
-
-    // Initialize functions when document is ready
-    fetchOrders();
-    AutoRefresh();
-    bindTableFilter();
+// Search functionality
+$('#searchInput').on('input', function() {
+    var value = $(this).val().toLowerCase();
+    $('#userTable tbody tr').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
 });
+
+// Initialize functions when document is ready
+fetchOrders();
+AutoRefresh();
+bindTableFilter();
 
 function AutoRefresh() {
     setInterval(function() {
-        fetchOrders();
+        // Check if the search input is empty before refreshing
+        if ($('#searchInput').val().trim() === '') {
+            fetchOrders();
+        }
     }, 3000);
 }
 

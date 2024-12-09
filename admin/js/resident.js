@@ -130,7 +130,7 @@ $('#validId').on('change', function(event) {
 
 
    // Show the modal with fade-in effect
-   $('#deleteResidentButton').click(function() {
+   $('.deleteResidentButton').click(function() {
 
     $('#TargetdelResidentId').val($(this).data('r_id'))
     $('#deleteConfirmationModal').fadeIn();

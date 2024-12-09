@@ -413,7 +413,7 @@ include "components/header.php";
 
 
 <!-- Modal -->
-<div id="deleteConfirmationModal" class="fixed z-10 inset-0 overflow-y-auto" style="display:none;" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50" style="display:none;">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         

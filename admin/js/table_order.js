@@ -74,7 +74,7 @@ function displayOrders(orders) {
 
             let orderRow = `
                 <tr class="border-t">
-                    <td class="px-4 py-2 text-sm text-gray-600">sss${orderItem.cr_id}</td>
+                    <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_id}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_formtype}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${fullName}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_payment}</td>

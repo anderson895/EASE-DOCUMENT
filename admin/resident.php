@@ -422,7 +422,7 @@ include "components/header.php";
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
 
-            <input type="text" id="TargetdelResidentId">
+            <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Confirm Deletion</h3>
@@ -432,7 +432,7 @@ include "components/header.php";
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <button id="confirmDeleteResident" type="button" class="bg-red-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">Delete</button>
-                    <button id="cancelDeleteResident" type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:mr-2">Cancel</button>
+                    <button type="button" class="cancelDeleteResident bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:mr-2">Cancel</button>
                 </div>
             </div>
         </form>

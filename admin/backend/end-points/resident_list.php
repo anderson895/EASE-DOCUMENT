@@ -78,7 +78,7 @@ if ($fetch_all_resident): ?>
 
 // Show the modal with fade-in effect
 $('.deleteResidentButton').click(function() {
-    console.log('click');
+    console.log($(this).data('r_id'));
 
     $('#TargetdelResidentId').val($(this).data('r_id'))
     $('#deleteConfirmationModal').fadeIn();

@@ -48,7 +48,7 @@ function fetchOrders() {
         data: { requestType: 'GetAllOrders' },
         dataType: 'json',
         success: function(response) {
-            console.log(response);
+            // console.log(response);
             if (response.status === 'success') {
                 displayOrders(response.data);
             } else {

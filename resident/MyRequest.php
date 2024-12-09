@@ -420,22 +420,4 @@ include "components/header.php";
 
 
 
-<script>
-    $(document).ready(function() {
-    $('.cancelOrder').click(function() {
-        $('#cancelOrderModal').fadeIn();
-    });
-
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        $('#cancelOrderModal').fadeOut();
-    });
-
-});
-</script>
-
-
-
-
-
 <?php include "components/footer.php";?>

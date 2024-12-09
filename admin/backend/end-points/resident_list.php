@@ -61,7 +61,6 @@ if ($fetch_all_resident): ?>
                 data-r_barangay="<?=$resident['r_barangay'];?>"
                 data-r_contact_number="<?=$resident['r_contact_number'];?>"
                 data-r_email="<?=$resident['r_email'];?>"
-                data-r_howlong_living="<?=$resident['r_howlong_living'];?>"
                 
                 >
                     <span class="material-icons text-sm">edit</span> 

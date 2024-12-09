@@ -35,7 +35,7 @@ if ($fetch_all_clearance_request): ?>
                 
              
                 
-                <button <?=$editFunction?> class="cancelOrder <?=$tailwindclassCancel?>">
+                <button <?=$editFunction?> class=" <?=$tailwindclassCancel?>">
                     <span class="material-icons text-sm">delete</span>
                 </button>
             </div>
@@ -51,16 +51,3 @@ if ($fetch_all_clearance_request): ?>
 <?php endif; ?>
 
 
-<script>
-    $(document).ready(function() {
-    $('.cancelOrder').click(function() {
-        $('#cancelOrderModal').fadeIn();
-    });
-
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        $('#cancelOrderModal').fadeOut();
-    });
-
-});
-</script>

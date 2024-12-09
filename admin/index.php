@@ -8,25 +8,25 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             <!-- Barangay ID Card -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-bold text-gray-700">Barangay ID</h2>
+                <h2 class="text-xl font-bold text-gray-700">Total Request Of Barangay ID</h2>
                 <p class="text-4xl font-extrabold text-blue-500 mt-4">120</p>
             </div>
 
             <!-- Barangay Clearance Card -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-bold text-gray-700">Barangay Clearance</h2>
+                <h2 class="text-xl font-bold text-gray-700">Total Request Of Barangay Clearance</h2>
                 <p class="text-4xl font-extrabold text-green-500 mt-4">85</p>
             </div>
 
             <!-- Residency Card -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-bold text-gray-700">Residency</h2>
+                <h2 class="text-xl font-bold text-gray-700">Total Request Of Residency</h2>
                 <p class="text-4xl font-extrabold text-red-500 mt-4">60</p>
             </div>
 
             <!-- Indigency Card -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-bold text-gray-700">Indigency</h2>
+                <h2 class="text-xl font-bold text-gray-700">Total Request Of Indigency</h2>
                 <p class="text-4xl font-extrabold text-yellow-500 mt-4">45</p>
             </div>
         </div>

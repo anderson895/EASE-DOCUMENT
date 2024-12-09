@@ -1,18 +1,18 @@
 <?php
-
 include('../class.php');
 $db = new global_class();
 
-$result = $db->totalRequestbarangayID();
+// Fetch the data
+$data = $db->totalRequestbarangayID();
 
-
-// Prepare the response
-$data = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $data[$row['cr_formtype']] = $row['total'];
-    }
+if ($data !== false) {
+    // Return the data as JSON
+    header('Content-Type: application/json');
+    echo json_encode($data);
+} else {
+    // Handle errors
+    http_response_code(500); // Internal Server Error
+    echo json_encode(['error' => 'Failed to fetch data.']);
 }
 
-echo json_encode($data);
 ?>

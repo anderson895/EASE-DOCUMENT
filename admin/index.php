@@ -32,19 +32,19 @@
         </div>
 
         <!-- Graphs Section -->
-                        <!-- Graphs Section -->
             <div class="bg-white shadow-lg rounded-lg p-4 sm:p-6 mb-8">
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Graphs</h2>
                 
                 <!-- Grid for Graphs -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <!-- Bar Chart -->
-                    <div id="barChart" class="w-full h-64"></div>
+                    <div id="barChart" class="w-full h-64 sm:h-80"></div>
 
                     <!-- Pie Chart -->
-                    <div id="pieChart" class="w-full h-64"></div>
+                    <div id="pieChart" class="w-full h-64 sm:h-80"></div>
                 </div>
             </div>
+
 
 
     </div>

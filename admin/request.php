@@ -68,4 +68,4 @@ if (isset($_GET['step'])) {
 
 <?php include "components/footer.php";?>
 
-<script src="js/table_order.js"></script>
+<!-- <script src="js/table_order.js"></script> -->

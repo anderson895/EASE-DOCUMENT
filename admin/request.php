@@ -31,6 +31,7 @@ if (isset($_GET['step'])) {
       <a href="?step=Shipped" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Shipped' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Shipped</a>
       <a href="?step=Delivered" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Delivered' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Delivered</a>
       <a href="?step=Rejected" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Rejected' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Rejected</a>
+      <a href="?step=Canceled" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Canceled' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Canceled</a>
     </div>
 
 

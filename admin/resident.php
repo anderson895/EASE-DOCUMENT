@@ -417,6 +417,5 @@ include "components/header.php";
 
 <?php include "components/footer.php";?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/resident.js"></script>
 <script src="js/address_api.js"></script>

@@ -139,21 +139,26 @@ class global_class extends db_connect
     }
     
 
-    public function DeleteResident($residentId){
-         // Start building the query
-         $query = "UPDATE `resident` SET 
-         `r_status` = '0' where r_id ='$residentId'";
-     
-     // Execute the query
-     $result = $this->conn->query($query);
- 
-     // Check if the update was successful
-     if ($result) {
-         return "Resident Remove successfully.";
-     } else {
-         return "Error executing the query: " . $this->conn->error;
-     }
+    public function DeleteResident($residentId) {
+        // Prepare the query
+        $query = "UPDATE `resident` SET `r_status` = '0' WHERE `r_id` = ?";
+        
+        // Prepare the statement
+        if ($stmt = $this->conn->prepare($query)) {
+            // Bind parameters
+            $stmt->bind_param("i", $residentId);
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                return "Resident removed successfully.";
+            } else {
+                return "Error executing the query: " . $stmt->error;
+            }
+        } else {
+            return "Error preparing the query: " . $this->conn->error;
+        }
     }
+    
     
     
     

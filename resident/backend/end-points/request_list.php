@@ -49,3 +49,18 @@ if ($fetch_all_clearance_request): ?>
         <td colspan="5" class="p-2">No record found.</td>
     </tr>
 <?php endif; ?>
+
+
+<script>
+    $(document).ready(function() {
+    $('.cancelOrder').click(function() {
+        $('#cancelOrderModal').fadeIn();
+    });
+
+    // Close modal when the Cancel button is clicked
+    $('.closeModal').click(function() {
+        $('#cancelOrderModal').fadeOut();
+    });
+
+});
+</script>

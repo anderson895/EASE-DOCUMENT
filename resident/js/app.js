@@ -318,15 +318,6 @@ $('#validId_Indigency').on('change', function () {
 
 
 
-    $('.cancelOrder').click(function() {
-        $('#cancelOrderModal').fadeIn();
-    });
-
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        $('#cancelOrderModal').fadeOut();
-    });
-
     
     
 

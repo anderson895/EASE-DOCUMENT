@@ -1,6 +1,3 @@
-$(document).ready(function() {
-
-    
 // Search functionality
 $('#searchInput').on('input', function() {
     var value = $(this).val().toLowerCase();
@@ -10,18 +7,21 @@ $('#searchInput').on('input', function() {
 });
 
 // Initialize functions when document is ready
-fetchOrders();
-AutoRefresh();
-bindTableFilter();
+$(document).ready(function() {
+    fetchOrders();
+    AutoRefresh();
+    bindTableFilter();
+});
 
 function AutoRefresh() {
     setInterval(function() {
-        // Check if the search input is empty before refreshing
+        // Only call fetchOrders if the search input is empty
         if ($('#searchInput').val().trim() === '') {
             fetchOrders();
         }
     }, 3000);
 }
+
 
 // Table filtering functionality
 function bindTableFilter() {

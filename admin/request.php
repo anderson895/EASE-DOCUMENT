@@ -26,7 +26,7 @@ if (isset($_GET['step'])) {
 
   <!-- Tabs -->
   <div class="flex justify-center space-x-4 space-y-2 md:space-y-0 md:space-x-4 border-b mb-6 overflow-x-auto whitespace-nowrap">
-      <a href="?step=Pending" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Pending' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Pending</a>
+      <a href="?step=Pending" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Pending' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">ssPending</a>
       <a href="?step=Approved" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Approved' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Approved</a>
       <a href="?step=Shipped" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Shipped' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Shipped</a>
       <a href="?step=Delivered" class="py-2 px-4 text-gray-600 hover:text-red-500 <?= ($defaultStep == 'Delivered' ? 'border-b-2 border-red-500 text-red-500' : '') ?>">Delivered</a>

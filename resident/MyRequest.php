@@ -407,7 +407,7 @@ include "components/header.php";
 <!-- Modal -->
 <div id="cancelOrderModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center" style="display:none;">
     <div class="bg-white p-6 rounded-lg w-1/3">
-        <h2 class="text-lg font-semibold mb-4">Are you sure you want to cancel this requestsss?</h2>
+        <h2 class="text-lg font-semibold mb-4">Are you sure you want to cancel this request?</h2>
         <div class="flex justify-end gap-4">
             <button class="closeModal bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
             <button class="bg-red-500 text-white py-2 px-4 rounded-md">Confirm</button>

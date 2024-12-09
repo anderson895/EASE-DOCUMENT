@@ -37,12 +37,12 @@ if ($fetch_all_clearance_request): ?>
                 <button class="viewResidentModal bg-green-500 text-white py-1 px-2 text-sm rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
                     <span class="material-icons text-sm">visibility</span> 
                 </button>
-                <button <?=$editFunction?> class="<?=$tailwindclassEdit?>">
+                <!-- <button <?=$editFunction?> class="<?=$tailwindclassEdit?>">
                     <span class="material-icons text-sm" >edit</span> 
-                </button>
+                </button> -->
                 
                 <button <?=$editFunction?> class="<?=$tailwindclassCancel?>">
-                    <span class="material-icons text-sm">delete</span> 
+                    <span class="material-icons text-sm">Cancel</span> 
                 </button>
             </div>
         </div>

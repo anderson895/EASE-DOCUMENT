@@ -12,6 +12,7 @@ class global_class extends db_connect
     }
 
 
+
     public function updateOrderStatus($orderId, $newStatus) {
         // Use a parameterized query to prevent SQL injection
         $stmt = $this->conn->prepare("UPDATE `centralize_request` SET `cr_status` = ? WHERE `cr_id` = ?");
@@ -19,6 +20,24 @@ class global_class extends db_connect
         // Bind the parameters to the query
         $stmt->bind_param("si", $newStatus, $orderId); // "si" means string and integer
         
+        // Execute the query and return the result
+        return $stmt->execute();
+    }
+
+
+    public function totalRequestbarangayID() {
+        // Use a parameterized query to prevent SQL injection
+        $stmt = $this->conn->prepare("SELECT 
+            cr_formtype,
+            COUNT(*) AS total
+        FROM 
+            centralize_request
+        WHERE
+            cr_formtype IN ('Barangay ID', 'Barangay Clearance', 'Barangay Residency', 'Barangay Indigency')
+        GROUP BY 
+            cr_formtype;
+        ");
+      
         // Execute the query and return the result
         return $stmt->execute();
     }

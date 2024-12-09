@@ -420,13 +420,13 @@ include "components/header.php";
     
     $('.cancelRequest').click(function() {
         console.log('cancelRequest');
-        // $('#cancelOrderModal').fadeIn();
+        $('#cancelOrderModal').fadeIn();
     });
 
     // Close modal when the Cancel button is clicked
     $('.closeModal').click(function() {
         console.log('closeModal');
-        // $('#cancelOrderModal').fadeOut();
+        $('#cancelOrderModal').fadeOut();
     });
 
 </script>

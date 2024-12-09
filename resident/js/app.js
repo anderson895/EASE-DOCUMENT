@@ -1,7 +1,50 @@
 $(document).ready(function() {
     
+    $('.cancelRequest').click(function() {
+        var requestId = $(this).attr('data-requestId');
+        $('#requestId').val(requestId)
+        $('#cancelOrderModal').fadeIn();
+    });
     
+    // Close modal when the Cancel button is clicked
+    $('.closeModal').click(function() {
+        console.log('closeModal');
+        $('#cancelOrderModal').fadeOut();
+    });
 
+
+    
+    $("#frmCancelRequest").on("submit", function(e) {
+        e.preventDefault(); 
+        // Show the loading spinner
+        $("#loadingSpinner_cancelRequest").show();
+    
+        var formData = new FormData(this);
+    
+        formData.append("requestType", 'CancelRequest');  
+        $.ajax({
+            url: "backend/end-points/controller.php",
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if (response['status']) {
+                    alertify.success("Cancel Request Successful");
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                }
+            }
+            
+        });
+    });
+
+
+
+    
     $("#frmRequest_Indigency").on("submit", function(e) {
         e.preventDefault(); 
         // Show the loading spinner
@@ -342,17 +385,6 @@ $('#validId_Indigency').on('change', function () {
 
 
 
-    $('.cancelRequest').click(function() {
-        console.log('cancelRequestsssss');
-        // $('#cancelOrderModal').fadeIn();
-    });
-    
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        console.log('closeModalsss');
-        // $('#cancelOrderModal').fadeOut();
-    });
-    
 
 });
 

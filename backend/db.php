@@ -5,6 +5,11 @@ define("db_user", "u800275806_easedocument");
 define("db_name", "u800275806_easedocument");
 define("db_pass", "Aasedocument2025");
 
+// define("db_host", "localhost");
+// define("db_user", "root");
+// define("db_name", "u800275806_easedocument");
+// define("db_pass", "");
+
 
 class db_connect
 {

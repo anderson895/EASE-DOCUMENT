@@ -12,6 +12,26 @@ class global_class extends db_connect
     }
 
 
+    public function CancelRequest($requestId) {
+        // Ensure that $requestId is sanitized to prevent SQL injection
+        $requestId = $this->conn->real_escape_string($requestId);
+    
+        // Construct the query to update the status of the request
+        $query = "UPDATE `centralize_request` SET `cr_status` = 'Canceled' WHERE `cr_id` = '$requestId'";
+    
+        // Execute the query
+        $result = $this->conn->query($query);
+    
+        // If the query is successful, return the result
+        if ($result) {
+            return ['status' => 'success', 'message' => 'Request canceled successfully.'];
+        } else {
+            return ['status' => 'error', 'message' => 'Failed to cancel the request.'];
+        }
+    }
+    
+
+    
     public function updateResident(
         $r_id, $fname, $mname, $lname, $r_suffix, $r_gender, $r_civil_status, 
         $r_bday, $r_contact_number, $region, $province, $city, $barangay, 

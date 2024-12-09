@@ -403,33 +403,30 @@ include "components/header.php";
 
 
 
-
 <!-- Modal -->
 <div id="cancelOrderModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center" style="display:none;">
-    <div class="bg-white p-6 rounded-lg w-1/3">
-        <h2 class="text-lg font-semibold mb-4">Are you sure you want to cancel this request?</h2>
-        <div class="flex justify-end gap-4">
-            <button class="closeModal bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
-            <button class="bg-red-500 text-white py-2 px-4 rounded-md">Confirm</button>
+    <div class="bg-white p-6 rounded-lg w-1/3 relative">
+   
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner_cancelRequest" style="display:none;">
+            <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
         </div>
+        
+        <form id="frmCancelRequest">
+            <h2 class="text-lg font-semibold mb-4">Are you sure you want to cancel this request?</h2>
+
+            <!-- Hidden input for requestId -->
+            <input type="hidden" id="requestId" name="requestId">
+
+            <div class="flex justify-end gap-4">
+                <button type="button" class="closeModal bg-gray-500 text-white py-2 px-4 rounded-md">Cancel</button>
+                <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-md">Confirm</button>
+            </div>
+        </form>
     </div>
 </div>
-
-
-<script>
-    
-    $('.cancelRequest').click(function() {
-        console.log('cancelRequest');
-        $('#cancelOrderModal').fadeIn();
-    });
-
-    // Close modal when the Cancel button is clicked
-    $('.closeModal').click(function() {
-        console.log('closeModal');
-        $('#cancelOrderModal').fadeOut();
-    });
-
-</script>
 
 
 

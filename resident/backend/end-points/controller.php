@@ -350,6 +350,15 @@ try {
 
 
              
+        }else if ($_POST['requestType'] == 'CancelRequest') {
+            $requestId = $_POST['requestId'];
+
+            $response = $db->CancelRequest($requestId);
+            echo json_encode([
+                'status' => 'success',
+                'message' => $response['message'] 
+            ]);
+
         }else{
             echo json_encode([
                 'status' => 'error',

@@ -327,7 +327,7 @@ try {
         } else if ($_POST['requestType'] == 'DeleteResident') {
             $residentId = filter_input(INPUT_POST, 'residentId', FILTER_SANITIZE_STRING);
             
-            $response = $db->DeleteResident($r_id, $residentId);
+            $response = $db->DeleteResident($residentId);
         
             // Return success message
             echo json_encode([

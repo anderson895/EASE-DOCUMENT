@@ -103,5 +103,3 @@ $(document).ready(function () {
     pieChart.render();
 });
 </script>
-
-<?php include "components/footer.php"; ?>

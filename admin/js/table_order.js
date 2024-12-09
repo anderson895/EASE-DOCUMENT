@@ -1,3 +1,5 @@
+console.log('updated');
+
 // Search functionality
 $('#searchInput').on('input', function() {
     var value = $(this).val().toLowerCase();

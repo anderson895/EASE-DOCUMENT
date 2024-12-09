@@ -413,7 +413,12 @@ include "components/header.php";
 <div id="deleteConfirmationModal" class="fixed z-10 inset-0 overflow-y-auto" style="display:none;" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
+        
+        <div id="DeleteResidentloadingSpinner" style="display:none;">
+                <div class=" absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
 

@@ -73,59 +73,7 @@ if ($fetch_all_resident): ?>
 
 
 
-                <script>
-                    
 
-// Show the modal with fade-in effect
-$('.deleteResidentButton').click(function() {
-    console.log($(this).data('r_id'));
-
-    $('#TargetdelResidentId').val($(this).data('r_id'))
-    $('#deleteConfirmationModal').fadeIn();
-});
-
-// Close the modal
-$('.cancelDeleteResident').click(function() {
-    console.log('closeModal');
-    $('#deleteConfirmationModal').fadeOut();
-});
-
-
-$("#frmDeleteResident").on("submit", function(e) {
-    e.preventDefault(); 
-    $("#DeleteResidentloadingSpinner").show();
-    var formData = new FormData(this); 
-  
-    formData.append("requestType", 'DeleteResident');  
-  
-    $.ajax({
-        url: "backend/end-points/controller.php",
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: 'json', 
-        success: function(response) {
-            console.log(response);
-
-
-            if (response['status']) {
-                alertify.success("Resident Update successfully!");
-              
-
-                setTimeout(function() {
-                    location.reload();
-                }, 2000);  
-            }
-        }
-        
-    });
-});
-
-
-
-
-                </script>
                
 
 

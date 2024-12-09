@@ -4,6 +4,64 @@ $(document).ready(function() {
 
 
 
+    // Show the modal with fade-in effect
+    $('.deleteResidentButton').click(function() {
+        const residentId = $(this).data('r_id');
+        console.log(residentId);
+
+        $('#TargetdelResidentId').val(residentId);
+        $('#deleteConfirmationModal').fadeIn();
+    });
+
+    // Close the modal
+    $('.cancelDeleteResident').click(function() {
+        console.log('Close Modal');
+        $('#deleteConfirmationModal').fadeOut();
+    });
+
+    // Handle the form submission
+    $("#frmDeleteResident").on("submit", function(e) {
+        e.preventDefault();
+
+        // Show the loading spinner and disable the submit button
+        $("#DeleteResidentloadingSpinner").show();
+        const submitButton = $(this).find('button[type="submit"]');
+        submitButton.prop('disabled', true);
+
+        const formData = new FormData(this);
+        formData.append("requestType", 'DeleteResident');
+
+        $.ajax({
+            url: "backend/end-points/controller.php",
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+
+                if (response.status) {
+                    alertify.success("Resident Deleted successfully!");
+
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    alertify.error(response.message || "Failed to delete resident. Please try again.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error);
+                alertify.error("An error occurred while processing your request. Please try again.");
+            },
+            complete: function() {
+                // Hide spinner and enable the submit button
+                $("#DeleteResidentloadingSpinner").hide();
+                submitButton.prop('disabled', false);
+            }
+        });
+    });
 
 
 

@@ -432,7 +432,7 @@ include "components/header.php";
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <button id="confirmDeleteResident" type="button" class="bg-red-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">Delete</button>
-                    <button type="button" class="cancelDeleteResident bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:mr-2">deleteConfirmationModal</button>
+                    <button type="button" class="cancelDeleteResident bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 sm:mr-2">Cancel</button>
                 </div>
             </div>
         </form>

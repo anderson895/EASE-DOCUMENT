@@ -166,7 +166,7 @@ $('#confirmDeleteResident').click(function() {
         data: formData,
         processData: false,
         contentType: false,
-        // dataType: 'json',
+        dataType: 'json',
         success: function(response) {
             console.log(response);
 

@@ -5,7 +5,6 @@ $db = new global_class();
 
 $result = $db->totalRequestbarangayID();
 
-$result = $conn->query($sql);
 
 // Prepare the response
 $data = [];

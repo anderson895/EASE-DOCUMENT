@@ -78,7 +78,6 @@ function displayOrders(orders) {
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_formtype}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${fullName}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_payment}</td>
-                    
                     <td class="px-4 py-2 text-sm text-gray-600">${formattedDate}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_price}</td>
                     <td class="px-4 py-2 text-sm text-gray-600">${orderItem.cr_address}</td>
@@ -93,12 +92,14 @@ function displayOrders(orders) {
 
                         <button 
                             class="mt-2 w-full px-4 py-2 text-white bg-green-500 rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-1"
-                            onclick="location.href='view_orders.php?cr_id=${orderItem.cr_id}';">
+                            onclick="location.href='view_orders.php?cr_id=${orderItem.cr_id}';"
+                            ${orderItem.cr_status === 'Canceled' ? 'disabled' : ''}>
                             View
                         </button>
                     </td>
                 </tr>
             `;
+
             tableBody.append(orderRow);
         });
     } else {

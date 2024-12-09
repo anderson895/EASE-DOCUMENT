@@ -51,8 +51,9 @@ if (isset($_GET['step'])) {
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Request ID</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Form Type</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Resident</th>
-                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Order Date</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Payment</th>
+                
+                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Order Date</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Price</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Address</th>
                 <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Status</th>

@@ -111,12 +111,12 @@ if ($fetch_all_resident): ?>
 
 
 
-
 <!-- Modal -->
 <div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 opacity-0 invisible transition-opacity duration-300">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
+        <!-- Loading Spinner -->
         <div id="DeleteResidentloadingSpinner" style="display:none;">
             <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
                 <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
@@ -125,7 +125,7 @@ if ($fetch_all_resident): ?>
 
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
-            <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
+            <input type="text" id="TargetdelResidentId" name="TargetdelResidentId" hidden>
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Confirm Deletion</h3>
@@ -149,8 +149,9 @@ if ($fetch_all_resident): ?>
 
 
 
+
 <script>
-    // Show the modal with fade-in effect
+ // Show the modal with fade-in effect
 $('.deleteResidentButton').click(function() {
     const residentId = $(this).data('r_id');
     console.log(residentId);

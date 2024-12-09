@@ -240,7 +240,32 @@ $('#r_valid_ids').on('change', function(event) {
            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
        });
    });
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -323,3 +348,25 @@ $('#confirmDeleteResident').click(function() {
     // Close the modal after initiating the request
     $('#deleteConfirmationModal').fadeOut();
 });
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

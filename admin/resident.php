@@ -411,20 +411,19 @@ include "components/header.php";
 
 
 
-
 <!-- Modal -->
-<div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50" style="display:none;">
+<div id="deleteConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 opacity-0 invisible transition-opacity duration-300" style="display:none;">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         
         <div id="DeleteResidentloadingSpinner" style="display:none;">
-                <div class=" absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+            <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
                 <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
             </div>
+        </div>
+
         <!-- Modal Content -->
         <form id="frmDeleteResident" class="space-y-6">
-
             <input type="text" id="TargetdelResidentId" name="TargetdelResidentId">
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">

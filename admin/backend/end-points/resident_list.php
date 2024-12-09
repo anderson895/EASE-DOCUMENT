@@ -66,9 +66,11 @@ if ($fetch_all_resident): ?>
                     <span class="material-icons text-sm">edit</span> 
                 </button>
               
-                <button class="bg-red-500 text-white py-1 px-2 text-sm rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
+                <button class="deleteResidentButton bg-red-500 text-white py-1 px-2 text-sm rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75" 
+                    data-r_id="<?= $resident['r_id']; ?>">
                     <span class="material-icons text-sm">delete</span> 
                 </button>
+
 
                
 

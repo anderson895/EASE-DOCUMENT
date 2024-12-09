@@ -337,7 +337,6 @@ $('#validId_Indigency').on('change', function () {
 
 
 
-$(document).ready(function() {
     $('.cancelOrder').click(function() {
         $('#cancelOrderModal').fadeIn();
     });
@@ -346,5 +345,3 @@ $(document).ready(function() {
     $('.closeModal').click(function() {
         $('#cancelOrderModal').fadeOut();
     });
-
-});

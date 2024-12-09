@@ -30,7 +30,6 @@ $cr_id=$_GET['cr_id'];
 $GetAllOrders = $db->viewOrderDetails($cr_id,$user_id);
 foreach ($GetAllOrders as $order):
 
-    $r_howlong_living=$order['r_howlong_living'];
     $r_id =$order['r_id'];
     $cr_code=$order['cr_code'];
     $birthday = $order['r_bday']; 

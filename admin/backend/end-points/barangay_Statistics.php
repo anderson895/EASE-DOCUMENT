@@ -3,7 +3,7 @@
 include('../class.php');
 $db = new global_class();
 
-$result = $db->fetch_all_resident();
+$result = $db->totalRequestbarangayID();
 
 $result = $conn->query($sql);
 
